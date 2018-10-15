@@ -1,0 +1,1 @@
+Egy megfelelően szerkesztett Readme file.
