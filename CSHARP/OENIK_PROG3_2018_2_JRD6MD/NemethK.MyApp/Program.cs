@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace NemethK.MyApp
 {
-    class Program
+    /// <summary>
+    ///  Main class of the program
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        ///  Main code of the program
+        /// </summary>
+        /// <param name="args">Yes</param>
+        internal static void Main(string[] args)
         {
+            Console.ReadLine();
         }
     }
 }
