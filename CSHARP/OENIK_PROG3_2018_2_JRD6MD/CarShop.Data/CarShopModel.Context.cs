@@ -12,13 +12,11 @@ namespace CarShop.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-
-    public partial class CarShopDataEntities : DbContext
+    
+    public partial class CarShopDataEntities1 : DbContext
     {
-        
-        public CarShopDataEntities()
-            : base("name=CarShopDataEntities")
+        public CarShopDataEntities1()
+            : base("name=CarShopDataEntities1")
         {
         }
     
@@ -27,12 +25,9 @@ namespace CarShop.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Carbrand> Carbrands { get; set; }
-        
+        public virtual DbSet<CarBrand> CarBrands { get; set; }
         public virtual DbSet<Extra> Extras { get; set; }
-        
         public virtual DbSet<ModelExtraswitch> ModelExtraswitches { get; set; }
-        
         public virtual DbSet<Model> Models { get; set; }
     }
 }

@@ -11,21 +11,21 @@ namespace CarShop.Data
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Carbrand
+
+    public partial class CarBrand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Carbrand()
+        public CarBrand()
         {
             this.Models = new HashSet<Model>();
         }
     
-        public decimal carbrand_id { get; set; }
-        public string carbrand_name { get; set; }
-        public string carbrand_country_name { get; set; }
-        public string carbrand_url { get; set; }
-        public Nullable<System.DateTime> carbrand_foundation_year { get; set; }
-        public string carbrand_yearly_traffic { get; set; }
+        public decimal Carbrand_Id { get; set; }
+        public string Carbrand_Name { get; set; }
+        public string Carbrand_Country_Name { get; set; }
+        public string Carbrand_Url { get; set; }
+        public Nullable<System.DateTime> Carbrand_Foundation_Year { get; set; }
+        public string Carbrand_Yearly_Traffic { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Model> Models { get; set; }

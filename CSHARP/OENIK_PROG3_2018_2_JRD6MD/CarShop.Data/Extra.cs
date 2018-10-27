@@ -20,12 +20,12 @@ namespace CarShop.Data
             this.ModelExtraswitches = new HashSet<ModelExtraswitch>();
         }
     
-        public decimal extra_id { get; set; }
-        public string extra_category_name { get; set; }
-        public string extra_name { get; set; }
-        public decimal extra_price { get; set; }
-        public string extra_color { get; set; }
-        public decimal extra_multiple_usage { get; set; }
+        public decimal Extra_Id { get; set; }
+        public string Extra_Category_Name { get; set; }
+        public string Extra_Name { get; set; }
+        public decimal Extra_Price { get; set; }
+        public string Extra_Color { get; set; }
+        public decimal Extra_Multiple_Usage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ModelExtraswitch> ModelExtraswitches { get; set; }

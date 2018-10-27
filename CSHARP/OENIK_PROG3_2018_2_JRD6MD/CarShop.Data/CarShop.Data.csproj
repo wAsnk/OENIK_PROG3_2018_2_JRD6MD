@@ -68,7 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carbrand.cs">
+    <Compile Include="CarBrand.cs">
       <DependentUpon>CarShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CarShopModel.Context.cs">
@@ -99,11 +99,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="CarShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CarShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="CarShopModel.edmx.diagram">
       <DependentUpon>CarShopModel.edmx</DependentUpon>
     </None>
@@ -116,6 +116,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cardata.sql" />
     <Content Include="CarShopData.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -125,8 +126,8 @@
     </Content>
     <Content Include="CarShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CarShopModel.Context.cs</LastGenOutput>
       <DependentUpon>CarShopModel.edmx</DependentUpon>
+      <LastGenOutput>CarShopModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="CarShopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

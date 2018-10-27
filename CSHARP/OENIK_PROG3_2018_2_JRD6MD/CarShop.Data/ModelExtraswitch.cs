@@ -14,9 +14,9 @@ namespace CarShop.Data
     
     public partial class ModelExtraswitch
     {
-        public decimal modelExtraswitch_id { get; set; }
-        public decimal model_id { get; set; }
-        public decimal extra_id { get; set; }
+        public decimal ModelExtraswitch_Id { get; set; }
+        public decimal Model_Id { get; set; }
+        public decimal Extra_Id { get; set; }
     
         public virtual Extra Extra { get; set; }
         public virtual Model Model { get; set; }
