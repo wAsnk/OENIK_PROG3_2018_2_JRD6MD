@@ -17,10 +17,81 @@ namespace CarShop.Program
     public class MainProgram
     {
         /// <summary>
-        /// SUMMARY HERE
+        /// Main program runs here
         /// </summary>
         public static void Main()
         {
+            string menuBordersTopAndBottom = "---------------------------------------";
+            string menuBordersLeft = "|\t";
+            string menuBordersRight = "|";
+            string mainMenuWaitingKey = string.Empty;
+            string subMenuWaitingKey = string.Empty;
+            string[] menuElements = { "Car Brand", "Models", "Extras" };
+            string[] subMenuElements = { "Create", "Read", "Update", "Delete" };
+            while (mainMenuWaitingKey != "x")
+            {
+                Console.Clear();
+                Console.WriteLine("\n" + menuBordersTopAndBottom);
+                for (int i = 0; i < menuElements.Length; i++)
+                {
+                    Console.WriteLine(menuBordersLeft + "{0,-30}" + menuBordersRight, $"{i}.) {menuElements[i]} Operations");
+                }
+
+                Console.WriteLine(menuBordersLeft + "{0,-30}" + menuBordersRight, "X ) To Exit");
+                Console.Write(menuBordersLeft + "Select Menu: ");
+                mainMenuWaitingKey = Console.ReadLine();
+                if (mainMenuWaitingKey != "x" && mainMenuWaitingKey != string.Empty)
+                {
+                    Console.Clear();
+                    for (int i = 0; i < subMenuElements.Length; i++)
+                    {
+                        Console.WriteLine(menuBordersLeft + "{0,-30}" + menuBordersRight, $"{i}.) {subMenuElements[i]}");
+                    }
+
+                    Console.Write(menuBordersLeft + "Select Menu: ");
+                    subMenuWaitingKey = Console.ReadLine();
+
+                    switch (subMenuWaitingKey)
+                    {
+                        case "0":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Not ready Yet");
+                                System.Threading.Thread.Sleep(1000);
+                                break;
+                            }
+
+                        case "1":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Not ready Yet");
+                                System.Threading.Thread.Sleep(1000);
+                                break;
+                            }
+
+                        case "2":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Not ready Yet");
+                                System.Threading.Thread.Sleep(1000);
+                                break;
+                            }
+
+                        case "x":
+                            {
+                                break;
+                            }
+
+                        default:
+                            {
+                                Console.Clear();
+                                Console.WriteLine("There is no such menu.");
+                                System.Threading.Thread.Sleep(1000);
+                                break;
+                            }
+                    }
+                }
+            }
         }
 
         /// <summary>
