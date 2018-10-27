@@ -1,9 +1,9 @@
-﻿// <copyright file="Class1.cs" company="CarShop">
+﻿// <copyright file="MainProgram.cs" company="CarShop">
 // Copyright (c) CarShop. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace CarShop.Logic.Tests
+namespace CarShop.Program
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,20 @@ namespace CarShop.Logic.Tests
     /// <summary>
     /// SUMMARY HERE
     /// </summary>
-    public class Class1
+    public class MainProgram
     {
+        /// <summary>
+        /// SUMMARY HERE
+        /// </summary>
+        public static void Main()
+        {
+        }
+
+        /// <summary>
+        /// SUMMARY HERE
+        /// </summary>
+        public void Methode()
+        {
+        }
     }
 }
