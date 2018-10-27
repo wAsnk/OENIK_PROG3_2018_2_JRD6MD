@@ -6,15 +6,17 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace CarShop.Data
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
+
     public partial class CarShopDataEntities : DbContext
     {
+        
         public CarShopDataEntities()
             : base("name=CarShopDataEntities")
         {
@@ -26,8 +28,12 @@ namespace CarShop.Data
         }
     
         public virtual DbSet<Carbrand> Carbrands { get; set; }
+        
         public virtual DbSet<Extra> Extras { get; set; }
+        
         public virtual DbSet<ModelExtraswitch> ModelExtraswitches { get; set; }
+        
         public virtual DbSet<Model> Models { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
