@@ -26,7 +26,8 @@ namespace CarShop.Program
             string menuBordersRight = "|";
             string mainMenuWaitingKey = string.Empty;
             string subMenuWaitingKey = string.Empty;
-            string[] menuElements = { "Car Brand", "Models", "Extras" };
+            string tabulatorAndText = "{0,-40}";
+            string[] menuElements = { "Car Brand", "Models", "Extras", "Model-Extras" };
             string[] subMenuElements = { "Create", "Read", "Update", "Delete" };
             while (mainMenuWaitingKey != "x")
             {
@@ -34,13 +35,27 @@ namespace CarShop.Program
                 Console.WriteLine("\n" + menuBordersTopAndBottom);
                 for (int i = 0; i < menuElements.Length; i++)
                 {
-                    Console.WriteLine(menuBordersLeft + "{0,-30}" + menuBordersRight, $"{i}.) {menuElements[i]} Operations");
+                    Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"{i}.) {menuElements[i]} Operations");
                 }
 
-                Console.WriteLine(menuBordersLeft + "{0,-30}" + menuBordersRight, "X ) To Exit");
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, string.Empty);
+
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"a.) Cars full price");
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"b.) Average base price per brands.");
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"c.) Function C");
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"d.) Function JAVA");
+
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, string.Empty);
+
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, "x.) To Exit");
                 Console.Write(menuBordersLeft + "Select Menu: ");
                 mainMenuWaitingKey = Console.ReadLine();
-                if (mainMenuWaitingKey != "x" && mainMenuWaitingKey != string.Empty)
+                if (mainMenuWaitingKey != "x"
+                    && mainMenuWaitingKey != string.Empty
+                    && mainMenuWaitingKey != "a"
+                    && mainMenuWaitingKey != "b"
+                    && mainMenuWaitingKey != "c"
+                    && mainMenuWaitingKey != "d")
                 {
                     Console.Clear();
                     for (int i = 0; i < subMenuElements.Length; i++)
@@ -90,6 +105,15 @@ namespace CarShop.Program
                                 break;
                             }
                     }
+                }
+                else if (mainMenuWaitingKey == "a"
+                    || mainMenuWaitingKey == "b"
+                    || mainMenuWaitingKey == "c"
+                    || mainMenuWaitingKey == "d")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Not ready Yet");
+                    System.Threading.Thread.Sleep(1000);
                 }
             }
         }
