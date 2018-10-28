@@ -13,10 +13,10 @@ namespace CarShop.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CarShopDataEntities1 : DbContext
+    public partial class CarShopDataEntities : DbContext
     {
-        public CarShopDataEntities1()
-            : base("name=CarShopDataEntities1")
+        public CarShopDataEntities()
+            : base("name=CarShopDataEntities")
         {
         }
     
