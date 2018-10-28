@@ -28,8 +28,7 @@ namespace CarShop.Logic
         /// </summary>
         /// <typeparam name="T">Type of the element</typeparam>
         /// <param name="key">The key of the searched element</param>
-        /// <returns>Returns the element with the given key.</returns>
-        object Read<T>(int key);
+        void Read<T>(int key);
 
         /// <summary>
         /// gafd
