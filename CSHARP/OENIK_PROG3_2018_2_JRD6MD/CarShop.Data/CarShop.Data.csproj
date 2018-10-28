@@ -86,7 +86,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarShopModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataClass.cs" />
     <Compile Include="Extra.cs">
       <DependentUpon>CarShopModel.tt</DependentUpon>
     </Compile>

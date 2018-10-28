@@ -16,5 +16,34 @@ namespace CarShop.Repository
     /// </summary>
     public interface IRepository
     {
+        /// <summary>
+        /// Create new table elements
+        /// </summary>
+        /// <typeparam name="T">Type of the element</typeparam>
+        /// <param name="value">Values for the new element</param>
+        void Create<T>(object value);
+
+        /// <summary>
+        /// Get the element with the given key
+        /// </summary>
+        /// <typeparam name="T">Type of the element</typeparam>
+        /// <param name="key">The key of the searched element</param>
+        /// <returns>Returns the element with the given key.</returns>
+        object Read<T>(int key);
+
+        /// <summary>
+        /// gafd
+        /// </summary>
+        /// <typeparam name="T">agf</typeparam>
+        /// <param name="key">sdgf</param>
+        /// <param name="newValues">hsgf</param>
+        void Update<T>(int key, object newValues);
+
+        /// <summary>
+        /// thzuj
+        /// </summary>
+        /// <typeparam name="T">rzmu</typeparam>
+        /// <param name="key">gdfas</param>
+        void Delete<T>(int key);
     }
 }

@@ -14,12 +14,20 @@ namespace CarShop.Program
     /// <summary>
     /// SUMMARY HERE
     /// </summary>
-    public class MainProgram
+    public static class MainProgram
     {
         /// <summary>
         /// Main program runs here
         /// </summary>
         public static void Main()
+        {
+            ConsoleMenu();
+        }
+
+        /// <summary>
+        /// SUMMARY HERE
+        /// </summary>
+        public static void ConsoleMenu()
         {
             string menuBordersTopAndBottom = "---------------------------------------";
             string menuBordersLeft = "|\t";
@@ -116,13 +124,6 @@ namespace CarShop.Program
                     System.Threading.Thread.Sleep(1000);
                 }
             }
-        }
-
-        /// <summary>
-        /// SUMMARY HERE
-        /// </summary>
-        public void Methode()
-        {
         }
     }
 }
