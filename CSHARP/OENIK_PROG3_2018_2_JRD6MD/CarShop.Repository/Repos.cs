@@ -1,4 +1,4 @@
-﻿// <copyright file="Implementation.cs" company="CarShop">
+﻿// <copyright file="Repos.cs" company="CarShop">
 // Copyright (c) CarShop. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -16,7 +16,7 @@ namespace CarShop.Repository
     /// <summary>
     /// adsadsa
     /// </summary>
-    public class Implementation : IRepository
+    public class Repos : IRepository
     {
         /// <summary>
         /// Insert object in the correct table
