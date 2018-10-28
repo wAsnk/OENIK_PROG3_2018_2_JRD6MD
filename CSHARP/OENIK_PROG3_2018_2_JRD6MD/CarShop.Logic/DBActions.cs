@@ -1,4 +1,4 @@
-﻿// <copyright file="Class1.cs" company="CarShop">
+﻿// <copyright file="DBActions.cs" company="CarShop">
 // Copyright (c) CarShop. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -14,7 +14,7 @@ namespace CarShop.Logic
     /// <summary>
     /// SUMMARY HERE
     /// </summary>
-    public class Class1
+    public class DBActions
     {
     }
 }
