@@ -1,9 +1,9 @@
-﻿// <copyright file="Class1.cs" company="CarShop">
+﻿// <copyright file="DataClass.cs" company="CarShop">
 // Copyright (c) CarShop. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace CarShop.Repository
+namespace CarShop.Data
 {
     using System;
     using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace CarShop.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Summary here
+    /// Class Summary
     /// </summary>
-    public class Class1
+    public class DataClass
     {
     }
 }

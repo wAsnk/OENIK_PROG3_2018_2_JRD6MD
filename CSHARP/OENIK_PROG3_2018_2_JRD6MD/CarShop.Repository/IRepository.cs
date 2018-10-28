@@ -12,28 +12,9 @@ namespace CarShop.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// IRepository Interface
+    /// Summary here
     /// </summary>
     public interface IRepository
     {
-        /// <summary>
-        /// Create
-        /// </summary>
-        void Create();
-
-        /// <summary>
-        /// Read
-        /// </summary>
-        void Read();
-
-        /// <summary>
-        /// Update
-        /// </summary>
-        void Update();
-
-        /// <summary>
-        /// Delete
-        /// </summary>
-        void Delete();
     }
 }
