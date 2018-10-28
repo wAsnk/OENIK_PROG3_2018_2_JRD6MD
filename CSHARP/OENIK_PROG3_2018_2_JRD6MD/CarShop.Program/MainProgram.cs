@@ -50,8 +50,8 @@ namespace CarShop.Program
 
                 Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"a.) Cars full price");
                 Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"b.) Average base price per brands.");
-                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"c.) Function C");
-                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"d.) Function JAVA");
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"c.) Extra categories usage.");
+                Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, $"d.) Request price offer.");
 
                 Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, string.Empty);
 
