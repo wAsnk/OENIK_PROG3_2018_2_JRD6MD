@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repos.cs" />
+    <Compile Include="ICarBrandRepository.cs" />
+    <Compile Include="IExtraRepository.cs" />
+    <Compile Include="IModelRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

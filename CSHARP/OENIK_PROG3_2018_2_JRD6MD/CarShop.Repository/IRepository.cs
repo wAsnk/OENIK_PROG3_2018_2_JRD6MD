@@ -10,40 +10,31 @@ namespace CarShop.Repository
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarShop.Data;
 
     /// <summary>
-    /// Summary here
+    /// Repository interface for CRUD
     /// </summary>
-    public interface IRepository
+    /// <typeparam name="T">Type of the class</typeparam>
+    public interface IRepository<T>
+        where T : class
     {
         /// <summary>
-        /// Create new table elements
+        /// Create a new item in the database, CREATE
         /// </summary>
-        /// <typeparam name="T">Type of the element</typeparam>
-        /// <param name="value">Values for the new element</param>
-        void Create<T>(object value);
+        /// <param name="newItem">Gives the new item which needs to be inserted.</param>
+        void Create(T newItem);
 
         /// <summary>
-        /// Get the element with the given key
+        /// Get all entities from the database, READ
         /// </summary>
-        /// <typeparam name="T">Type of the element</typeparam>
-        /// <param name="key">The key of the searched element</param>
-        /// <returns>Returns the element with the given key.</returns>
-        object Read<T>(int key);
+        /// <returns>The wanted type of entities</returns>
+        IQueryable<T> ReadAll();
 
         /// <summary>
-        /// gafd
+        /// Removes an item from the database DELETE
         /// </summary>
-        /// <typeparam name="T">agf</typeparam>
-        /// <param name="key">sdgf</param>
-        /// <param name="newValues">hsgf</param>
-        void Update<T>(int key, object newValues);
-
-        /// <summary>
-        /// thzuj
-        /// </summary>
-        /// <typeparam name="T">rzmu</typeparam>
-        /// <param name="key">gdfas</param>
-        void Delete<T>(int key);
+        /// <param name="itemToBeDeleted">The item which wanted to be deleted</param>
+        void Delete(T itemToBeDeleted);
     }
 }
