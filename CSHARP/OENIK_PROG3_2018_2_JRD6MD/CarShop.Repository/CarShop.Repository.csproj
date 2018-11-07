@@ -50,11 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtraRepository.cs" />
     <Compile Include="ICarBrandRepository.cs" />
     <Compile Include="IExtraRepository.cs" />
+    <Compile Include="IModelExtraSwitch.cs" />
     <Compile Include="IModelRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="ModelExtraSwitchRepository.cs" />
+    <Compile Include="ModelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CarBrandRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
