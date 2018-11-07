@@ -14,7 +14,7 @@ namespace CarShop.Logic
     /// <summary>
     /// SUMMARY HERE
     /// </summary>
-    public class DBActions : ILogic
+    public class DBActions
     {
         /// <summary>
         /// Create new table elements
