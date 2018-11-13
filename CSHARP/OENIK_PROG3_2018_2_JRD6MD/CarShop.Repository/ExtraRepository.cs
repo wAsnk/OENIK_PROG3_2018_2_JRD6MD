@@ -17,25 +17,17 @@ namespace CarShop.Repository
     /// </summary>
     public class ExtraRepository : IExtraRepository
     {
-        private CarShopDataEntities carShopDataEntities;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExtraRepository"/> class.
-        /// </summary>
-        /// <param name="carShopDataEntities">Dataentity</param>
-        public ExtraRepository(CarShopDataEntities carShopDataEntities)
-        {
-            this.carShopDataEntities = carShopDataEntities;
-        }
-
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="newItem">Gives the new item which needs to be inserted.</param>
         public void Create(Extra newItem)
         {
-            this.carShopDataEntities.Extras.Add(newItem);
-            this.carShopDataEntities.SaveChanges();
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                carShopDataEntities.Extras.Add(newItem);
+                carShopDataEntities.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -44,7 +36,10 @@ namespace CarShop.Repository
         /// <returns>The wanted type of entities</returns>
         public IQueryable<Extra> ReadAll()
         {
-            return this.carShopDataEntities.Extras;
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                return carShopDataEntities.Extras;
+            }
         }
 
         /// <summary>
@@ -53,8 +48,11 @@ namespace CarShop.Repository
         /// <param name="itemToBeDeleted">The item which wanted to be deleted</param>
         public void Delete(Extra itemToBeDeleted)
         {
-            this.carShopDataEntities.Extras.Remove(itemToBeDeleted);
-            this.carShopDataEntities.SaveChanges();
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                carShopDataEntities.Extras.Remove(itemToBeDeleted);
+                carShopDataEntities.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -64,8 +62,11 @@ namespace CarShop.Repository
         /// <param name="newCategoryName">New category name of the extra</param>
         public void ChangeCategoryName(int id, string newCategoryName)
         {
-            var extra = this.carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
-            extra.Extra_Category_Name = newCategoryName;
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                var extra = carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
+                extra.Extra_Category_Name = newCategoryName;
+            }
         }
 
         /// <summary>
@@ -75,8 +76,11 @@ namespace CarShop.Repository
         /// <param name="newName">New  name of the extra</param>
         public void ChangeName(int id, string newName)
         {
-            var extra = this.carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
-            extra.Extra_Name = newName;
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                var extra = carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
+                extra.Extra_Name = newName;
+            }
         }
 
         /// <summary>
@@ -86,8 +90,11 @@ namespace CarShop.Repository
         /// <param name="newPrice">New price of the extra</param>
         public void ChangePrice(int id, int newPrice)
         {
-            var extra = this.carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
-            extra.Extra_Price = newPrice;
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                var extra = carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
+                extra.Extra_Price = newPrice;
+            }
         }
 
         /// <summary>
@@ -97,8 +104,11 @@ namespace CarShop.Repository
         /// <param name="newColor">New color of the extra</param>
         public void ChangeColor(int id, string newColor)
         {
-            var extra = this.carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
-            extra.Extra_Color = newColor;
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                var extra = carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
+                extra.Extra_Color = newColor;
+            }
         }
 
         /// <summary>
@@ -108,8 +118,11 @@ namespace CarShop.Repository
         /// <param name="newMultipleUsage">New Multiple Usage of the extra</param>
         public void ChangeMultipleUsage(int id, int newMultipleUsage)
         {
-            var extra = this.carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
-            extra.Extra_Multiple_Usage = newMultipleUsage;
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                var extra = carShopDataEntities.Extras.Single(x => x.Extra_Id == id);
+                extra.Extra_Multiple_Usage = newMultipleUsage;
+            }
         }
     }
 }

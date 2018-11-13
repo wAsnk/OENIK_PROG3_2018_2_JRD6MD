@@ -17,13 +17,13 @@ namespace CarShop.Logic
     /// </summary>
     public class CarBrandLogic : ILogic
     {
-        CarBrandRepository carBrandRepository = new CarBrandRepository();
+        // CarBrandRepository carBrandRepository = new CarBrandRepository();
+
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
         public void Create()
         {
-            
         }
 
         /// <summary>
