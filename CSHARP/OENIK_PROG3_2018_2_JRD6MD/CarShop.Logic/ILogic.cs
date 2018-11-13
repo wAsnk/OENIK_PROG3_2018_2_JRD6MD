@@ -19,13 +19,15 @@ namespace CarShop.Logic
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
-        void Create();
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        void Create(string mainMenuWaitingKey);
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
         /// <returns>The wanted type of entities</returns>
-        IQueryable ReadAll();
+        IQueryable ReadAll(string mainMenuWaitingKey);
 
         /// <summary>
         /// Removes an item from the database DELETE

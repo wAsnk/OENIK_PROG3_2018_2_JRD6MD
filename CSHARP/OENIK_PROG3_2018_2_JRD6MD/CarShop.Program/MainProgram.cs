@@ -10,6 +10,7 @@ namespace CarShop.Program
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarShop.Logic;
 
     /// <summary>
     /// SUMMARY HERE
@@ -21,13 +22,15 @@ namespace CarShop.Program
         /// </summary>
         public static void Main()
         {
-            ConsoleMenu();
+            ILogic logic = new CarBrandLogic();
+            ConsoleMenu(logic);
         }
 
         /// <summary>
-        /// SUMMARY HERE
+        /// Console Menu
         /// </summary>
-        public static void ConsoleMenu()
+        /// <param name="logic">Business logic interface parameter</param>
+        public static void ConsoleMenu(ILogic logic)
         {
             string menuBordersTopAndBottom = "---------------------------------------";
             string menuBordersLeft = "|\t";
@@ -80,6 +83,7 @@ namespace CarShop.Program
                             {
                                 Console.Clear();
                                 Console.WriteLine("Not ready Yet");
+                                logic.Create(mainMenuWaitingKey);
                                 System.Threading.Thread.Sleep(1000);
                                 break;
                             }
@@ -88,6 +92,7 @@ namespace CarShop.Program
                             {
                                 Console.Clear();
                                 Console.WriteLine("Not ready Yet");
+                                WriteArray(logic.ReadAll(mainMenuWaitingKey));
                                 System.Threading.Thread.Sleep(1000);
                                 break;
                             }
@@ -123,6 +128,14 @@ namespace CarShop.Program
                     Console.WriteLine("Not ready Yet");
                     System.Threading.Thread.Sleep(1000);
                 }
+            }
+        }
+
+        private static void WriteArray(IQueryable array)
+        {
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
             }
         }
     }

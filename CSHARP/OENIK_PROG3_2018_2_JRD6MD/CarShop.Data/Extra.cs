@@ -20,7 +20,7 @@ namespace CarShop.Data
             this.ModelExtraswitches = new HashSet<ModelExtraswitch>();
         }
     
-        public decimal Extra_Id { get; set; }
+        public int Extra_Id { get; set; }
         public string Extra_Category_Name { get; set; }
         public string Extra_Name { get; set; }
         public decimal Extra_Price { get; set; }
@@ -31,4 +31,3 @@ namespace CarShop.Data
         public virtual ICollection<ModelExtraswitch> ModelExtraswitches { get; set; }
     }
 }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

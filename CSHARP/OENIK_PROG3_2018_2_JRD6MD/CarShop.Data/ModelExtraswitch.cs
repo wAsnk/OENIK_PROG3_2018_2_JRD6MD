@@ -14,12 +14,11 @@ namespace CarShop.Data
     
     public partial class ModelExtraswitch
     {
-        public decimal ModelExtraswitch_Id { get; set; }
-        public decimal Model_Id { get; set; }
-        public decimal Extra_Id { get; set; }
+        public int ModelExtraswitch_Id { get; set; }
+        public int Model_Id { get; set; }
+        public int Extra_Id { get; set; }
     
         public virtual Extra Extra { get; set; }
         public virtual Model Model { get; set; }
     }
 }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

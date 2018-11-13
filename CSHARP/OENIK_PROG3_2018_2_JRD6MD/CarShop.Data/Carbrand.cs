@@ -11,7 +11,7 @@ namespace CarShop.Data
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class CarBrand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,15 +20,14 @@ namespace CarShop.Data
             this.Models = new HashSet<Model>();
         }
     
-        public decimal Carbrand_Id { get; set; }
+        public int Carbrand_Id { get; set; }
         public string Carbrand_Name { get; set; }
         public string Carbrand_Country_Name { get; set; }
         public string Carbrand_Url { get; set; }
-        public Nullable<System.DateTime> Carbrand_Foundation_Year { get; set; }
+        public Nullable<decimal> Carbrand_Foundation_Year { get; set; }
         public string Carbrand_Yearly_Traffic { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Model> Models { get; set; }
     }
 }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -10,6 +10,7 @@ namespace CarShop.Logic
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarShop.Data;
     using CarShop.Repository;
 
     /// <summary>
@@ -17,21 +18,52 @@ namespace CarShop.Logic
     /// </summary>
     public class CarBrandLogic : ILogic
     {
-        // CarBrandRepository carBrandRepository = new CarBrandRepository();
-
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
-        public void Create()
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        public void Create(string mainMenuWaitingKey)
         {
+            // "Car Brand", "Models", "Extras", "Model-Extras"
+            if (mainMenuWaitingKey == "0")
+            {
+                ICarBrandRepository icarbrandrepo = new CarBrandRepository();
+                Console.Write("New car brand name:");
+                var brandname = Console.ReadLine();
+                Console.Write("\nNew car brand country name:");
+                var countryname = Console.ReadLine();
+                Console.Write("\nNew car brand Url:");
+                var url = Console.ReadLine();
+                Console.Write("\nNew car brand Foundation Year:");
+                var foundationyear = int.Parse(Console.ReadLine());
+                Console.Write("\nNew car brand Yearly Traffic");
+                var yearlytraffic = Console.ReadLine();
+                CarBrand carBrand = new CarBrand()
+                {
+                    Carbrand_Name = brandname,
+                    Carbrand_Country_Name = countryname,
+                    Carbrand_Url = url,
+                    Carbrand_Foundation_Year = foundationyear,
+                    Carbrand_Yearly_Traffic = yearlytraffic
+                };
+                icarbrandrepo.Create(carBrand);
+            }
         }
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
         /// <returns>The wanted type of entities</returns>
-        public IQueryable ReadAll()
+        public IQueryable ReadAll(string mainMenuWaitingKey)
         {
+            if (mainMenuWaitingKey == "0")
+            {
+                ICarBrandRepository icarbrandrepo = new CarBrandRepository();
+                var everyCarbrand = icarbrandrepo.ReadAll();
+                return everyCarbrand;
+            }
+
             return null;
         }
 

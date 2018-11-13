@@ -29,6 +29,13 @@ namespace CarShop.Repository
             {
                 carShopDataEntities.CarBrands.Add(newItem);
                 carShopDataEntities.SaveChanges();
+
+                foreach (var item in carShopDataEntities.CarBrands)
+                {
+                    Console.WriteLine(item.Carbrand_Name);
+                }
+
+                Console.ReadLine();
             }
         }
 
@@ -104,12 +111,12 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newFoundationYear">New Foundation Year of the car brand</param>
-        public void ChangeFoundationYear(int id, string newFoundationYear)
+        public void ChangeFoundationYear(int id, int newFoundationYear)
         {
             using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
             {
                 var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
-                carbrand.Carbrand_Foundation_Year = DateTime.Parse(newFoundationYear);
+                carbrand.Carbrand_Foundation_Year = newFoundationYear;
             }
         }
 

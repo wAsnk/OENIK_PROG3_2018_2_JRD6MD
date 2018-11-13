@@ -43,7 +43,7 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newFoundationYear">New Foundation Year of the car brand</param>
-        void ChangeFoundationYear(int id, string newFoundationYear);
+        void ChangeFoundationYear(int id, int newFoundationYear);
 
         /// <summary>
         /// Change Yearly traffic of the car brand

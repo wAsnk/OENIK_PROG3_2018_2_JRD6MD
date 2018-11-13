@@ -11,6 +11,7 @@
     <AssemblyName>CarShop.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -69,43 +69,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarBrand.cs">
-      <DependentUpon>CarShopModel.tt</DependentUpon>
+      <DependentUpon>CarShopDataEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarShopModel.Context.cs">
+    <Compile Include="CarShopDataEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CarShopModel.Context.tt</DependentUpon>
+      <DependentUpon>CarShopDataEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarShopModel.cs">
+    <Compile Include="CarShopDataEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CarShopModel.tt</DependentUpon>
+      <DependentUpon>CarShopDataEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarShopModel.Designer.cs">
+    <Compile Include="CarShopDataEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CarShopModel.edmx</DependentUpon>
+      <DependentUpon>CarShopDataEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataClass.cs" />
     <Compile Include="Extra.cs">
-      <DependentUpon>CarShopModel.tt</DependentUpon>
+      <DependentUpon>CarShopDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.cs">
-      <DependentUpon>CarShopModel.tt</DependentUpon>
+      <DependentUpon>CarShopDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelExtraswitch.cs">
-      <DependentUpon>CarShopModel.tt</DependentUpon>
+      <DependentUpon>CarShopDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="CarShopModel.edmx">
+    <EntityDeploy Include="CarShopDataEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CarShopModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>CarShopDataEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CarShopModel.edmx.diagram">
-      <DependentUpon>CarShopModel.edmx</DependentUpon>
+    <None Include="CarShopDataEntities.edmx.diagram">
+      <DependentUpon>CarShopDataEntities.edmx</DependentUpon>
     </None>
     <None Include="oenik.ruleset" />
     <None Include="packages.config" />
@@ -116,23 +116,23 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cardata.sql" />
+    <Content Include="cardataloader.sql" />
     <Content Include="CarShopData.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CarShopDataEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarShopDataEntities.edmx</DependentUpon>
+      <LastGenOutput>CarShopDataEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CarShopDataEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarShopDataEntities.edmx</DependentUpon>
+      <LastGenOutput>CarShopDataEntities.cs</LastGenOutput>
     </Content>
     <Content Include="CarShopData_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>CarShopData.mdf</DependentUpon>
-    </Content>
-    <Content Include="CarShopModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CarShopModel.edmx</DependentUpon>
-      <LastGenOutput>CarShopModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CarShopModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CarShopModel.edmx</DependentUpon>
-      <LastGenOutput>CarShopModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

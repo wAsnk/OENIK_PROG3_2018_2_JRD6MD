@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarShopDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CarBrands">
+          <Key>
+            <PropertyRef Name="Carbrand_Id" />
+          </Key>
+          <Property Name="Carbrand_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Carbrand_Name" Type="varchar" MaxLength="64" />
+          <Property Name="Carbrand_Country_Name" Type="varchar" MaxLength="64" />
+          <Property Name="Carbrand_Url" Type="varchar" MaxLength="64" />
+          <Property Name="Carbrand_Foundation_Year" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="Carbrand_Yearly_Traffic" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Extras">
+          <Key>
+            <PropertyRef Name="Extra_Id" />
+          </Key>
+          <Property Name="Extra_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Extra_Category_Name" Type="varchar" MaxLength="64" />
+          <Property Name="Extra_Name" Type="varchar" MaxLength="64" />
+          <Property Name="Extra_Price" Type="numeric" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="Extra_Color" Type="varchar" MaxLength="64" />
+          <Property Name="Extra_Multiple_Usage" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModelExtraswitch">
+          <Key>
+            <PropertyRef Name="ModelExtraswitch_Id" />
+          </Key>
+          <Property Name="ModelExtraswitch_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model_Id" Type="int" Nullable="false" />
+          <Property Name="Extra_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="Model_Id" />
+          </Key>
+          <Property Name="Model_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Carbrand_Id" Type="int" Nullable="false" />
+          <Property Name="Model_Name" Type="varchar" MaxLength="64" />
+          <Property Name="Model_Release_Day" Type="date" />
+          <Property Name="Model_Engine_Volume" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="Model_Horsepower" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="Model_Base_Price" Type="numeric" Precision="16" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Carbrand_Id">
+          <End Role="CarBrands" Type="Self.CarBrands" Multiplicity="1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarBrands">
+              <PropertyRef Name="Carbrand_Id" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="Carbrand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Extra_Id">
+          <End Role="Extras" Type="Self.Extras" Multiplicity="1" />
+          <End Role="ModelExtraswitch" Type="Self.ModelExtraswitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Extras">
+              <PropertyRef Name="Extra_Id" />
+            </Principal>
+            <Dependent Role="ModelExtraswitch">
+              <PropertyRef Name="Extra_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Id">
+          <End Role="Models" Type="Self.Models" Multiplicity="1" />
+          <End Role="ModelExtraswitch" Type="Self.ModelExtraswitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="Model_Id" />
+            </Principal>
+            <Dependent Role="ModelExtraswitch">
+              <PropertyRef Name="Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarShopDataModelStoreContainer">
+          <EntitySet Name="CarBrands" EntityType="Self.CarBrands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Extras" EntityType="Self.Extras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModelExtraswitch" EntityType="Self.ModelExtraswitch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Carbrand_Id" Association="Self.FK_Carbrand_Id">
+            <End Role="CarBrands" EntitySet="CarBrands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Extra_Id" Association="Self.FK_Extra_Id">
+            <End Role="Extras" EntitySet="Extras" />
+            <End Role="ModelExtraswitch" EntitySet="ModelExtraswitch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Id" Association="Self.FK_Model_Id">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="ModelExtraswitch" EntitySet="ModelExtraswitch" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarShopDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarBrand">
+          <Key>
+            <PropertyRef Name="Carbrand_Id" />
+          </Key>
+          <Property Name="Carbrand_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Carbrand_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Carbrand_Country_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Carbrand_Url" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Carbrand_Foundation_Year" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="Carbrand_Yearly_Traffic" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Models" Relationship="Self.FK_Carbrand_Id" FromRole="CarBrands" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Extra">
+          <Key>
+            <PropertyRef Name="Extra_Id" />
+          </Key>
+          <Property Name="Extra_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Extra_Category_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Extra_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Extra_Price" Type="Decimal" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="Extra_Color" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Extra_Multiple_Usage" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ModelExtraswitches" Relationship="Self.FK_Extra_Id" FromRole="Extras" ToRole="ModelExtraswitch" />
+        </EntityType>
+        <EntityType Name="ModelExtraswitch">
+          <Key>
+            <PropertyRef Name="ModelExtraswitch_Id" />
+          </Key>
+          <Property Name="ModelExtraswitch_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model_Id" Type="Int32" Nullable="false" />
+          <Property Name="Extra_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Extra" Relationship="Self.FK_Extra_Id" FromRole="ModelExtraswitch" ToRole="Extras" />
+          <NavigationProperty Name="Model" Relationship="Self.FK_Model_Id" FromRole="ModelExtraswitch" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Model_Id" />
+          </Key>
+          <Property Name="Model_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Carbrand_Id" Type="Int32" Nullable="false" />
+          <Property Name="Model_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Model_Release_Day" Type="DateTime" Precision="0" />
+          <Property Name="Model_Engine_Volume" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="Model_Horsepower" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="Model_Base_Price" Type="Decimal" Precision="16" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CarBrand" Relationship="Self.FK_Carbrand_Id" FromRole="Models" ToRole="CarBrands" />
+          <NavigationProperty Name="ModelExtraswitches" Relationship="Self.FK_Model_Id" FromRole="Models" ToRole="ModelExtraswitch" />
+        </EntityType>
+        <Association Name="FK_Carbrand_Id">
+          <End Role="CarBrands" Type="Self.CarBrand" Multiplicity="1" />
+          <End Role="Models" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarBrands">
+              <PropertyRef Name="Carbrand_Id" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="Carbrand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Extra_Id">
+          <End Role="Extras" Type="Self.Extra" Multiplicity="1" />
+          <End Role="ModelExtraswitch" Type="Self.ModelExtraswitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Extras">
+              <PropertyRef Name="Extra_Id" />
+            </Principal>
+            <Dependent Role="ModelExtraswitch">
+              <PropertyRef Name="Extra_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Id">
+          <End Role="Models" Type="Self.Model" Multiplicity="1" />
+          <End Role="ModelExtraswitch" Type="Self.ModelExtraswitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="Model_Id" />
+            </Principal>
+            <Dependent Role="ModelExtraswitch">
+              <PropertyRef Name="Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarShopDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarBrands" EntityType="Self.CarBrand" />
+          <EntitySet Name="Extras" EntityType="Self.Extra" />
+          <EntitySet Name="ModelExtraswitches" EntityType="Self.ModelExtraswitch" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <AssociationSet Name="FK_Carbrand_Id" Association="Self.FK_Carbrand_Id">
+            <End Role="CarBrands" EntitySet="CarBrands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Extra_Id" Association="Self.FK_Extra_Id">
+            <End Role="Extras" EntitySet="Extras" />
+            <End Role="ModelExtraswitch" EntitySet="ModelExtraswitches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Id" Association="Self.FK_Model_Id">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="ModelExtraswitch" EntitySet="ModelExtraswitches" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarShopDataModelStoreContainer" CdmEntityContainer="CarShopDataEntities">
+          <EntitySetMapping Name="CarBrands">
+            <EntityTypeMapping TypeName="CarShopDataModel.CarBrand">
+              <MappingFragment StoreEntitySet="CarBrands">
+                <ScalarProperty Name="Carbrand_Id" ColumnName="Carbrand_Id" />
+                <ScalarProperty Name="Carbrand_Name" ColumnName="Carbrand_Name" />
+                <ScalarProperty Name="Carbrand_Country_Name" ColumnName="Carbrand_Country_Name" />
+                <ScalarProperty Name="Carbrand_Url" ColumnName="Carbrand_Url" />
+                <ScalarProperty Name="Carbrand_Foundation_Year" ColumnName="Carbrand_Foundation_Year" />
+                <ScalarProperty Name="Carbrand_Yearly_Traffic" ColumnName="Carbrand_Yearly_Traffic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Extras">
+            <EntityTypeMapping TypeName="CarShopDataModel.Extra">
+              <MappingFragment StoreEntitySet="Extras">
+                <ScalarProperty Name="Extra_Id" ColumnName="Extra_Id" />
+                <ScalarProperty Name="Extra_Category_Name" ColumnName="Extra_Category_Name" />
+                <ScalarProperty Name="Extra_Name" ColumnName="Extra_Name" />
+                <ScalarProperty Name="Extra_Price" ColumnName="Extra_Price" />
+                <ScalarProperty Name="Extra_Color" ColumnName="Extra_Color" />
+                <ScalarProperty Name="Extra_Multiple_Usage" ColumnName="Extra_Multiple_Usage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModelExtraswitches">
+            <EntityTypeMapping TypeName="CarShopDataModel.ModelExtraswitch">
+              <MappingFragment StoreEntitySet="ModelExtraswitch">
+                <ScalarProperty Name="ModelExtraswitch_Id" ColumnName="ModelExtraswitch_Id" />
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Extra_Id" ColumnName="Extra_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="CarShopDataModel.Model">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Carbrand_Id" ColumnName="Carbrand_Id" />
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Model_Release_Day" ColumnName="Model_Release_Day" />
+                <ScalarProperty Name="Model_Engine_Volume" ColumnName="Model_Engine_Volume" />
+                <ScalarProperty Name="Model_Horsepower" ColumnName="Model_Horsepower" />
+                <ScalarProperty Name="Model_Base_Price" ColumnName="Model_Base_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
