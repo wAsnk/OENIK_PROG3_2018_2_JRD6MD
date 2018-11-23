@@ -121,7 +121,7 @@ namespace CarShop.Logic
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
         /// <param name="carShopDataEntities">Data entity</param>
         /// <returns>The wanted type of entities</returns>
-        public IQueryable<string> ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities)
+        public IQueryable ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities)
         {
             // { "Car Brand", "Models", "Extras", "Model-Extras" };
             if (mainMenuWaitingKey == "0")

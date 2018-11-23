@@ -1,4 +1,4 @@
-﻿// <copyright file="Class1.cs" company="CarShop">
+﻿// <copyright file="LogicTest.cs" company="CarShop">
 // Copyright (c) CarShop. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -10,9 +10,10 @@ namespace CarShop.Logic.Tests
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarShop.Data;
+    using CarShop.Logic;
     using Moq;
     using NUnit.Framework;
-    using CarShop.Logic;
 
     /// <summary>
     /// SUMMARY HERE
@@ -21,14 +22,17 @@ namespace CarShop.Logic.Tests
     public class LogicTest
     {
         /// <summary>
-        /// Test test
+        /// When table doesnt exist returns null
         /// </summary>
         [Test]
-        public void CreatedCarBrand()
+        public void WhenTableDoesntExists_ReturnNull()
         {
-            Mock<ILogic> mock = new Mock<ILogic>();
-
-            //mock.Setup(m => m.Create());
+            var logic = new CarBrandLogic();
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                var result = logic.ReadAll("10", carShopDataEntities);
+                Assert.That(result, Is.EqualTo(null));
+            }
         }
     }
 }

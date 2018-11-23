@@ -164,7 +164,7 @@ namespace CarShop.Program
             }
         }
 
-        private static void WriteArray(IEnumerable<string> array)
+        private static void WriteArray(IQueryable array)
         {
             foreach (var item in array)
             {

@@ -30,7 +30,7 @@ namespace CarShop.Logic
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
         /// <param name="carShopDataEntities">Data entity</param>
         /// <returns>The wanted type of entities</returns>
-        IQueryable<string> ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
+        IQueryable ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Removes an item from the database DELETE
