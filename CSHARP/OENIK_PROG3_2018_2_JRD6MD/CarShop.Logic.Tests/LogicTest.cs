@@ -10,11 +10,25 @@ namespace CarShop.Logic.Tests
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Moq;
+    using NUnit.Framework;
+    using CarShop.Logic;
 
     /// <summary>
     /// SUMMARY HERE
     /// </summary>
-    public class Class1
+    [TestFixture]
+    public class LogicTest
     {
+        /// <summary>
+        /// Test test
+        /// </summary>
+        [Test]
+        public void CreatedCarBrand()
+        {
+            Mock<ILogic> mock = new Mock<ILogic>();
+
+            //mock.Setup(m => m.Create());
+        }
     }
 }
