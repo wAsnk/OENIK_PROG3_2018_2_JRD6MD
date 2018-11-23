@@ -68,6 +68,10 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarShop.Data\CarShop.Data.csproj">
+      <Project>{694d8fff-f80e-49a8-b536-a8aab06d1d11}</Project>
+      <Name>CarShop.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarShop.Logic\CarShop.Logic.csproj">
       <Project>{7fc90b14-4206-42df-9a95-2cc085cacc1f}</Project>
       <Name>CarShop.Logic</Name>

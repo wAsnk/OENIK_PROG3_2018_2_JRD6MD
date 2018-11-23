@@ -53,7 +53,7 @@
     <Compile Include="ExtraRepository.cs" />
     <Compile Include="ICarBrandRepository.cs" />
     <Compile Include="IExtraRepository.cs" />
-    <Compile Include="IModelExtraSwitch.cs" />
+    <Compile Include="IModelExtraSwitchRepository.cs" />
     <Compile Include="IModelRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ModelExtraSwitchRepository.cs" />

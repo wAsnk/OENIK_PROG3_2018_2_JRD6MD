@@ -7,6 +7,7 @@ namespace CarShop.Repository
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -23,45 +24,32 @@ namespace CarShop.Repository
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="newItem">Gives the new item which needs to be inserted.</param>
-        public void Create(CarBrand newItem)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void Create(CarBrand newItem, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 carShopDataEntities.CarBrands.Add(newItem);
                 carShopDataEntities.SaveChanges();
-
-                foreach (var item in carShopDataEntities.CarBrands)
-                {
-                    Console.WriteLine(item.Carbrand_Name);
-                }
-
-                Console.ReadLine();
-            }
         }
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
+        /// <param name="carShopDataEntities">Data entites</param>
         /// <returns>The wanted type of entities</returns>
-        public IQueryable<CarBrand> ReadAll()
+        public IQueryable<CarBrand> ReadAll(CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 return carShopDataEntities.CarBrands;
-            }
         }
 
         /// <summary>
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="itemToBeDeleted">The item which wanted to be deleted</param>
-        public void Delete(CarBrand itemToBeDeleted)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void Delete(CarBrand itemToBeDeleted, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 carShopDataEntities.CarBrands.Remove(itemToBeDeleted);
                 carShopDataEntities.SaveChanges();
-            }
         }
 
         /// <summary>
@@ -69,13 +57,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the carbarnd</param>
         /// <param name="newName">New name of the carbrand</param>
-        public void ChangeName(int id, string newName)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeName(int id, string newName, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
                 carbrand.Carbrand_Name = newName;
-            }
         }
 
         /// <summary>
@@ -83,13 +69,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newCountry">New country of the car brand</param>
-        public void ChangeCountry(int id, string newCountry)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeCountry(int id, string newCountry, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
-                var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
+            var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
                 carbrand.Carbrand_Country_Name = newCountry;
-            }
         }
 
         /// <summary>
@@ -97,13 +81,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newUrl">New URL of the car brand</param>
-        public void ChangeUrl(int id, string newUrl)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeUrl(int id, string newUrl, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
                 carbrand.Carbrand_Url = newUrl;
-            }
         }
 
         /// <summary>
@@ -111,13 +93,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newFoundationYear">New Foundation Year of the car brand</param>
-        public void ChangeFoundationYear(int id, int newFoundationYear)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeFoundationYear(int id, int newFoundationYear, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
                 carbrand.Carbrand_Foundation_Year = newFoundationYear;
-            }
         }
 
         /// <summary>
@@ -125,13 +105,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newYearlyTraffic">New yearly traffic of the car brand</param>
-        public void ChangeYearlyTraffic(int id, string newYearlyTraffic)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeYearlyTraffic(int id, string newYearlyTraffic, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var carbrand = carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
                 carbrand.Carbrand_Yearly_Traffic = newYearlyTraffic;
-            }
         }
     }
 }

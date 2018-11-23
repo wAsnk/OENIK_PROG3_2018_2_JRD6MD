@@ -10,6 +10,7 @@ namespace CarShop.Logic
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarShop.Data;
 
     /// <summary>
     /// ILogic interface defined here
@@ -20,24 +21,30 @@ namespace CarShop.Logic
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        void Create(string mainMenuWaitingKey);
+        /// <param name="carShopDataEntities">Data entity</param>
+        void Create(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        /// <param name="carShopDataEntities">Data entity</param>
         /// <returns>The wanted type of entities</returns>
-        IQueryable ReadAll(string mainMenuWaitingKey);
+        IQueryable<string> ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Removes an item from the database DELETE
         /// </summary>
-        void Delete();
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        /// <param name="carShopDataEntities">Data entity</param>
+        void Delete(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Updates a parameter of a database entity.
         /// </summary>
-        void Update();
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        /// <param name="carShopDataEntities">Data entity</param>
+        void Update(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Gives cars full price

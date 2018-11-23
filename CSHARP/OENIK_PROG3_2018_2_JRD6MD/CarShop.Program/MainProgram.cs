@@ -10,6 +10,7 @@ namespace CarShop.Program
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarShop.Data;
     using CarShop.Logic;
 
     /// <summary>
@@ -18,12 +19,28 @@ namespace CarShop.Program
     public static class MainProgram
     {
         /// <summary>
+        /// dasfg
+        /// </summary>
+        private static CarShopDataEntities carShopDataEntities;
+
+        /// <summary>
+        /// Gets or sets jfg
+        /// </summary>
+        public static CarShopDataEntities CarShopDataEntites
+        {
+            get { return carShopDataEntities; }
+            set { carShopDataEntities = value; }
+        }
+
+        /// <summary>
         /// Main program runs here
         /// </summary>
         public static void Main()
         {
             ILogic logic = new CarBrandLogic();
+            carShopDataEntities = new CarShopDataEntities();
             ConsoleMenu(logic);
+            carShopDataEntities.Dispose();
         }
 
         /// <summary>
@@ -79,29 +96,45 @@ namespace CarShop.Program
 
                     switch (subMenuWaitingKey)
                     {
+                        // "Create", "Read", "Update", "Delete"
                         case "0":
                             {
+                                // Create
                                 Console.Clear();
-                                Console.WriteLine("Not ready Yet");
-                                logic.Create(mainMenuWaitingKey);
-                                System.Threading.Thread.Sleep(1000);
+                                logic.Create(mainMenuWaitingKey, carShopDataEntities);
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
                                 break;
                             }
 
                         case "1":
                             {
+                                // Read
                                 Console.Clear();
-                                Console.WriteLine("Not ready Yet");
-                                WriteArray(logic.ReadAll(mainMenuWaitingKey));
-                                System.Threading.Thread.Sleep(1000);
+                                WriteArray(logic.ReadAll(mainMenuWaitingKey, carShopDataEntities));
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+
                                 break;
                             }
 
                         case "2":
                             {
+                                // Update
                                 Console.Clear();
                                 Console.WriteLine("Not ready Yet");
                                 System.Threading.Thread.Sleep(1000);
+                                break;
+                            }
+
+                        case "3":
+                            {
+                                // Delete
+                                Console.Clear();
+                                logic.Delete(mainMenuWaitingKey, carShopDataEntities);
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+
                                 break;
                             }
 
@@ -131,7 +164,7 @@ namespace CarShop.Program
             }
         }
 
-        private static void WriteArray(IQueryable array)
+        private static void WriteArray(IEnumerable<string> array)
         {
             foreach (var item in array)
             {

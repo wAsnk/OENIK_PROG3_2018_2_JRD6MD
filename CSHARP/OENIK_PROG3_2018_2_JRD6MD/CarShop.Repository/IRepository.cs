@@ -23,18 +23,21 @@ namespace CarShop.Repository
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="newItem">Gives the new item which needs to be inserted.</param>
-        void Create(T newItem);
+        /// <param name="carShopDataEntities">Data entities</param>
+        void Create(T newItem, CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
+        /// <param name="carShopDataEntities">Data entities</param>
         /// <returns>The wanted type of entities</returns>
-        IQueryable<T> ReadAll();
+        IQueryable<T> ReadAll(CarShopDataEntities carShopDataEntities);
 
         /// <summary>
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="itemToBeDeleted">The item which wanted to be deleted</param>
-        void Delete(T itemToBeDeleted);
+        /// <param name="carShopDataEntities">Data entities</param>
+        void Delete(T itemToBeDeleted, CarShopDataEntities carShopDataEntities);
     }
 }

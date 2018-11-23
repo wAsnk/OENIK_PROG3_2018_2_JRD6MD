@@ -21,38 +21,32 @@ namespace CarShop.Repository
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="newItem">Gives the new item which needs to be inserted.</param>
-        public void Create(Model newItem)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void Create(Model newItem, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 carShopDataEntities.Models.Add(newItem);
                 carShopDataEntities.SaveChanges();
-            }
         }
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
+        /// <param name="carShopDataEntities">Data entites</param>
         /// <returns>The wanted type of entities</returns>
-        public IQueryable<Model> ReadAll()
+        public IQueryable<Model> ReadAll(CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
-                return carShopDataEntities.Models;
-            }
+            return carShopDataEntities.Models;
         }
 
         /// <summary>
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="itemToBeDeleted">The item which wanted to be deleted</param>
-        public void Delete(Model itemToBeDeleted)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void Delete(Model itemToBeDeleted, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 carShopDataEntities.Models.Remove(itemToBeDeleted);
                 carShopDataEntities.SaveChanges();
-            }
         }
 
         /// <summary>
@@ -60,13 +54,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newName">New  name of the model</param>
-        public void ChangeName(int id, string newName)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeName(int id, string newName, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
                 extra.Model_Name = newName;
-            }
         }
 
         /// <summary>
@@ -74,13 +66,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newReleaseDay">New Release Day of the model</param>
-        public void ChangeReleaseDay(int id, string newReleaseDay)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeReleaseDay(int id, string newReleaseDay, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
                 extra.Model_Release_Day = DateTime.Parse(newReleaseDay);
-            }
         }
 
         /// <summary>
@@ -88,13 +78,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newEngineVolume">New Engine Volume of the model</param>
-        public void ChangeEngineVolume(int id, int newEngineVolume)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeEngineVolume(int id, int newEngineVolume, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
                 extra.Model_Engine_Volume = newEngineVolume;
-            }
         }
 
         /// <summary>
@@ -102,13 +90,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newHorsePower">New Horse Power of the model</param>
-        public void ChangeHorsePower(int id, int newHorsePower)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeHorsePower(int id, int newHorsePower, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
                 extra.Model_Horsepower = newHorsePower;
-            }
         }
 
         /// <summary>
@@ -116,13 +102,11 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newBasePrice">New Base Price of the model</param>
-        public void ChangeBasePrice(int id, int newBasePrice)
+        /// <param name="carShopDataEntities">Data entities</param>
+        public void ChangeBasePrice(int id, int newBasePrice, CarShopDataEntities carShopDataEntities)
         {
-            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
-            {
                 var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
                 extra.Model_Base_Price = newBasePrice;
-            }
         }
     }
 }

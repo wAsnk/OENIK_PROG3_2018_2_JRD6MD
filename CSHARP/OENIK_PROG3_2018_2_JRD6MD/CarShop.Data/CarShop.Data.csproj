@@ -118,7 +118,7 @@
   <ItemGroup>
     <Content Include="cardataloader.sql" />
     <Content Include="CarShopData.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="CarShopDataEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -131,7 +131,7 @@
       <LastGenOutput>CarShopDataEntities.cs</LastGenOutput>
     </Content>
     <Content Include="CarShopData_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>CarShopData.mdf</DependentUpon>
     </Content>
   </ItemGroup>
