@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Repository", "CarShop.Repository\CarShop.Repository.csproj", "{95096AC8-A953-46B9-9899-EE11F5F8A0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Repository.Tests", "CarShop.Repository.Tests\CarShop.Repository.Tests.csproj", "{A4BE781F-8889-4466-B14C-1B3C5BCDDD6E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Logic", "CarShop.Logic\CarShop.Logic.csproj", "{7FC90B14-4206-42DF-9A95-2CC085CACC1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Data", "CarShop.Data\CarShop.Data.csproj", "{694D8FFF-F80E-49A8-B536-A8AAB06D1D11}"
@@ -25,10 +23,6 @@ Global
 		{95096AC8-A953-46B9-9899-EE11F5F8A0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95096AC8-A953-46B9-9899-EE11F5F8A0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95096AC8-A953-46B9-9899-EE11F5F8A0BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4BE781F-8889-4466-B14C-1B3C5BCDDD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4BE781F-8889-4466-B14C-1B3C5BCDDD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4BE781F-8889-4466-B14C-1B3C5BCDDD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4BE781F-8889-4466-B14C-1B3C5BCDDD6E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7FC90B14-4206-42DF-9A95-2CC085CACC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7FC90B14-4206-42DF-9A95-2CC085CACC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC90B14-4206-42DF-9A95-2CC085CACC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
