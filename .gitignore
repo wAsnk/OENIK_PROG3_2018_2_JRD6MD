@@ -55,7 +55,7 @@ project.fragment.lock.json
 artifacts/
 
 # StyleCop
-StyleCopReport.xml
+#StyleCopReport.xml
 
 # Files built by Visual Studio
 *_i.c
