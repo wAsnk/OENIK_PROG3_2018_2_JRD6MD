@@ -22,39 +22,34 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the carbarnd</param>
         /// <param name="newName">New name of the carbrand</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeName(int id, string newName, CarShopDataEntities carShopDataEntities);
+        void ChangeName(int id, string newName);
 
         /// <summary>
         /// Change country of the car brand
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newCountry">New country of the car brand</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeCountry(int id, string newCountry, CarShopDataEntities carShopDataEntities);
+        void ChangeCountry(int id, string newCountry);
 
         /// <summary>
         /// Change URL of the car brand
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newUrl">New URL of the car brand</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeUrl(int id, string newUrl, CarShopDataEntities carShopDataEntities);
+        void ChangeUrl(int id, string newUrl);
 
         /// <summary>
         /// Change Foundation Year of the car brand
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newFoundationYear">New Foundation Year of the car brand</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeFoundationYear(int id, int newFoundationYear, CarShopDataEntities carShopDataEntities);
+        void ChangeFoundationYear(int id, int newFoundationYear);
 
         /// <summary>
         /// Change Yearly traffic of the car brand
         /// </summary>
         /// <param name="id">Id of the car brand</param>
         /// <param name="newYearlyTraffic">New yearly traffic of the car brand</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeYearlyTraffic(int id, string newYearlyTraffic, CarShopDataEntities carShopDataEntities);
+        void ChangeYearlyTraffic(int id, string newYearlyTraffic);
     }
 }

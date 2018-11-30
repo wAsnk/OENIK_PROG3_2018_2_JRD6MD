@@ -22,39 +22,34 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newName">New  name of the model</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeName(int id, string newName, CarShopDataEntities carShopDataEntities);
+        void ChangeName(int id, string newName);
 
         /// <summary>
         /// Change Release Day of the model
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newReleaseDay">New Release Day of the model</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeReleaseDay(int id, string newReleaseDay, CarShopDataEntities carShopDataEntities);
+        void ChangeReleaseDay(int id, string newReleaseDay);
 
         /// <summary>
         /// Change Engine Volume of the model
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newEngineVolume">New Engine Volume of the model</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeEngineVolume(int id, int newEngineVolume, CarShopDataEntities carShopDataEntities);
+        void ChangeEngineVolume(int id, int newEngineVolume);
 
         /// <summary>
         /// Change Horse Power of the model
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newHorsePower">New Horse Power of the model</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeHorsePower(int id, int newHorsePower, CarShopDataEntities carShopDataEntities);
+        void ChangeHorsePower(int id, int newHorsePower);
 
         /// <summary>
         /// Change Bas ePrice of the model
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newBasePrice">New Base Price of the model</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeBasePrice(int id, int newBasePrice, CarShopDataEntities carShopDataEntities);
+        void ChangeBasePrice(int id, int newBasePrice);
     }
 }

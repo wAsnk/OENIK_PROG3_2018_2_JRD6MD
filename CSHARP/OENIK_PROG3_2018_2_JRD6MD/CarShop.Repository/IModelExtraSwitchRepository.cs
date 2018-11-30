@@ -22,15 +22,13 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newId">>New  ID of the modelextraswitch</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeModelId(int id, int newId, CarShopDataEntities carShopDataEntities);
+        void ChangeModelId(int id, int newId);
 
         /// <summary>
         /// Change name of the model
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newId">New  ID of the modelextraswitch</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeExtraId(int id, int newId, CarShopDataEntities carShopDataEntities);
+        void ChangeExtraId(int id, int newId);
     }
 }

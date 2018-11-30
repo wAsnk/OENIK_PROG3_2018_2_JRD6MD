@@ -22,39 +22,34 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the extra</param>
         /// <param name="newCategoryName">New category name of the extra</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeCategoryName(int id, string newCategoryName, CarShopDataEntities carShopDataEntities);
+        void ChangeCategoryName(int id, string newCategoryName);
 
         /// <summary>
         /// Change  name of the extra
         /// </summary>
         /// <param name="id">Id of the extra</param>
         /// <param name="newName">New  name of the extra</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeName(int id, string newName, CarShopDataEntities carShopDataEntities);
+        void ChangeName(int id, string newName);
 
         /// <summary>
         /// Change price of the extra
         /// </summary>
         /// <param name="id">Id of the extra</param>
         /// <param name="newPrice">New price of the extra</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangePrice(int id, int newPrice, CarShopDataEntities carShopDataEntities);
+        void ChangePrice(int id, int newPrice);
 
         /// <summary>
         /// Change color of the extra
         /// </summary>
         /// <param name="id">Id of the extra</param>
         /// <param name="newColor">New color of the extra</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeColor(int id, string newColor, CarShopDataEntities carShopDataEntities);
+        void ChangeColor(int id, string newColor);
 
         /// <summary>
         /// Change Multiple Usage of the extra
         /// </summary>
         /// <param name="id">Id of the extra</param>
         /// <param name="newMultipleUsage">New Multiple Usage of the extra</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        void ChangeMultipleUsage(int id, int newMultipleUsage, CarShopDataEntities carShopDataEntities);
+        void ChangeMultipleUsage(int id, int newMultipleUsage);
     }
 }

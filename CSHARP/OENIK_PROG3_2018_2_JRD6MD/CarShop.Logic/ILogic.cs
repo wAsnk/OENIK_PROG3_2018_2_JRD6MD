@@ -20,8 +20,8 @@ namespace CarShop.Logic
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
-        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        void Create(string mainMenuWaitingKey);
+        /// <param name="value">Object to be created</param>
+        void Create(object value);
 
         /// <summary>
         /// Get all entities from the database, READ
@@ -40,7 +40,9 @@ namespace CarShop.Logic
         /// Updates a parameter of a database entity.
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        void Update(string mainMenuWaitingKey);
+        /// <param name="id">Id of the entity</param>
+        /// <param name="updateData">Update date to be used</param>
+        void Update(string mainMenuWaitingKey, int id, string updateData);
 
         /// <summary>
         /// Gives cars full price

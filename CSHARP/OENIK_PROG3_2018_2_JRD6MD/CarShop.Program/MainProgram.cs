@@ -24,16 +24,17 @@ namespace CarShop.Program
         /// </summary>
         public static void Main()
         {
-            ICarBrandRepository carBrandRepository = new CarBrandRepository();
-            IModelRepository modelRepository = new ModelRepository();
-            IExtraRepository extraRepository = new ExtraRepository();
-            IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
-            CarShopDataEntities carShopDataEntities = new CarShopDataEntities();
-            ILogic logic = new CarBrandLogic(carBrandRepository, modelRepository, extraRepository, modelExtraSwitchRepository, carShopDataEntities);
+            using (CarShopDataEntities carShopDataEntities = new CarShopDataEntities())
+            {
+                ICarBrandRepository carBrandRepository = new CarBrandRepository(carShopDataEntities);
+                IModelRepository modelRepository = new ModelRepository(carShopDataEntities);
+                IExtraRepository extraRepository = new ExtraRepository(carShopDataEntities);
+                IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository(carShopDataEntities);
 
-            ConsoleMenu(logic);
+                ILogic logic = new CarBrandLogic(carBrandRepository, modelRepository, extraRepository, modelExtraSwitchRepository);
 
-            // carShopDataEntities.Dispose();
+                ConsoleMenu(logic);
+            }
         }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace CarShop.Program
                             {
                                 // Create
                                 Console.Clear();
-                                logic.Create(mainMenuWaitingKey);
+                                GetInfosForNewElement(mainMenuWaitingKey, logic);
                                 Console.WriteLine("Press enter to continue.");
                                 Console.ReadLine();
                                 break;
@@ -164,6 +165,163 @@ namespace CarShop.Program
             foreach (var item in array)
             {
                 Console.WriteLine(item);
+            }
+        }
+
+        /// <summary>
+        /// Get infos for new element
+        /// </summary>
+        /// <param name="mainMenuWaitingKey">Main menu key</param>
+        /// <param name="logic">ILogic interface</param>
+        private static void GetInfosForNewElement(string mainMenuWaitingKey, ILogic logic)
+        {
+            try
+            {
+                // "Car Brand", "Models", "Extras", "Model-Extras"
+                if (mainMenuWaitingKey == "0")
+                {
+                    // ICarBrandRepository icarbrandrepo = new CarBrandRepository();
+                    Console.Write("New car brand name: ");
+                    var brandname = Console.ReadLine();
+                    Console.Write("\nNew car brand country name: ");
+                    var countryname = Console.ReadLine();
+                    Console.Write("\nNew car brand Url: ");
+                    var url = Console.ReadLine();
+                    Console.Write("\nNew car brand Foundation Year (number e.g.: 1950): ");
+                    var foundationyear = int.Parse(Console.ReadLine());
+                    Console.Write("\nNew car brand Yearly Traffic: ");
+                    var yearlytraffic = Console.ReadLine();
+                    CarBrand carBrand = new CarBrand()
+                    {
+                        Carbrand_Name = brandname,
+                        Carbrand_Country_Name = countryname,
+                        Carbrand_Url = url,
+                        Carbrand_Foundation_Year = foundationyear,
+                        Carbrand_Yearly_Traffic = yearlytraffic
+                    };
+                    logic.Create(carBrand);
+                }
+                else if (mainMenuWaitingKey == "1")
+                {
+                    // IModelRepository modelRepository = new ModelRepository();
+                    Console.Write("New model carbrand ID (number): ");
+                    var carbrandid = int.Parse(Console.ReadLine());
+                    Console.Write("New model name: ");
+                    var modelname = Console.ReadLine();
+                    Console.Write("New model release day e.g. 2018-11-23: ");
+                    var releaseday = DateTime.Parse(Console.ReadLine());
+                    Console.Write("New model engine volume (number) e.g. 1900 : ");
+                    var enginevolume = int.Parse(Console.ReadLine());
+                    Console.Write("New model horsepower (number) e.g. 75 : ");
+                    var horsepower = int.Parse(Console.ReadLine());
+                    Console.Write("New model base price (number) e.g. 50000: ");
+                    var baseprice = int.Parse(Console.ReadLine());
+
+                    Model model = new Model()
+                    {
+                        Carbrand_Id = carbrandid,
+                        Model_Name = modelname,
+                        Model_Release_Day = releaseday,
+                        Model_Engine_Volume = enginevolume,
+                        Model_Horsepower = horsepower,
+                        Model_Base_Price = baseprice
+                    };
+                    logic.Create(model);
+                }
+                else if (mainMenuWaitingKey == "2")
+                {
+                    // IExtraRepository extraRepository = new ExtraRepository();
+                    Console.Write("New extra caregory name: ");
+                    var categoryname = Console.ReadLine();
+                    Console.Write("New extra name: ");
+                    var extraname = Console.ReadLine();
+                    Console.Write("New extra price (number) e.g. 3000: ");
+                    var extraprice = int.Parse(Console.ReadLine());
+                    Console.Write("New extra color: ");
+                    var extracolor = Console.ReadLine();
+                    Console.Write("New extra multiple usage (0 == no, 1 == yes): ");
+                    var multipleUsage = int.Parse(Console.ReadLine());
+                    Extra extra = new Extra()
+                    {
+                        Extra_Category_Name = categoryname,
+                        Extra_Name = extraname,
+                        Extra_Price = extraprice,
+                        Extra_Color = extracolor,
+                        Extra_Multiple_Usage = multipleUsage
+                    };
+                    logic.Create(extra);
+                }
+                else if (mainMenuWaitingKey == "3")
+                {
+                    // IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
+                    Console.Write("New Model_Id (number): ");
+                    var modelid = int.Parse(Console.ReadLine());
+                    Console.Write("New Extra_Id (number): ");
+                    var extraid = int.Parse(Console.ReadLine());
+                    ModelExtraswitch modelExtraswitch = new ModelExtraswitch()
+                    {
+                        Model_Id = modelid,
+                        Extra_Id = extraid
+                    };
+                    logic.Create(modelExtraswitch);
+                }
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine("\n\nYou gave wrong format to the previous table data, try again!\n\nException message: " + exception.Message + "\n\n");
+            }
+            catch (NoClassException exception)
+            {
+                Console.WriteLine(exception.Msg);
+            }
+        }
+
+        /// <summary>
+        /// Updates a parameter of a database entity.
+        /// </summary>
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        /// <param name="logic">ILogic interface</param>
+        private static void UpdateParameters(string mainMenuWaitingKey, ILogic logic)
+        {
+            // { "Car Brand", "Models", "Extras", "Model-Extras" };
+            if (mainMenuWaitingKey == "0")
+            {
+                Console.Write("Update Carbrand_Yearly_Traffic:");
+                Console.Write("Car Brand ID: ");
+                int id = int.Parse(Console.ReadLine());
+                Console.Write("New Yearly Traffic: ");
+                string yearlyTraffic = Console.ReadLine();
+
+                logic.Update(mainMenuWaitingKey, id, yearlyTraffic);
+            }
+            else if (mainMenuWaitingKey == "1")
+            {
+                Console.WriteLine("Update Model_Base_Price:");
+                Console.Write("Model ID: ");
+                var id = int.Parse(Console.ReadLine());
+                Console.Write("New Model_Base_Price: ");
+                var baseprice = Console.ReadLine();
+
+                logic.Update(mainMenuWaitingKey, id, baseprice);
+            }
+            else if (mainMenuWaitingKey == "2")
+            {
+                Console.WriteLine("Update Extra_Price:");
+                Console.Write("Update Extra of Extra ID: ");
+                var id = int.Parse(Console.ReadLine());
+                Console.Write("New Extra_Price: ");
+                var extraprice = Console.ReadLine();
+
+                logic.Update(mainMenuWaitingKey, id, extraprice);
+            }
+            else if (mainMenuWaitingKey == "3")
+            {
+                Console.WriteLine("Update Model_Id:");
+                Console.Write("ModelExtraSwitch ID: ");
+                var id = int.Parse(Console.ReadLine());
+                Console.Write("New Model_Id: ");
+                var modelid = Console.ReadLine();
+                logic.Update(mainMenuWaitingKey, id, modelid);
             }
         }
     }

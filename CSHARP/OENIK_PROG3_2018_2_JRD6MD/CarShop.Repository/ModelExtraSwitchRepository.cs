@@ -17,36 +17,44 @@ namespace CarShop.Repository
     /// </summary>
     public class ModelExtraSwitchRepository : IModelExtraSwitchRepository
     {
+        private readonly CarShopDataEntities carShopDataEntities;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ModelExtraSwitchRepository"/> class.
+        /// </summary>
+        /// <param name="carShopDataEntities">Data entities</param>
+        public ModelExtraSwitchRepository(CarShopDataEntities carShopDataEntities)
+        {
+            this.carShopDataEntities = carShopDataEntities;
+        }
+
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="newItem">Gives the new item which needs to be inserted.</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        public void Create(ModelExtraswitch newItem, CarShopDataEntities carShopDataEntities)
+        public void Create(ModelExtraswitch newItem)
         {
-            carShopDataEntities.ModelExtraswitches.Add(newItem);
-            carShopDataEntities.SaveChanges();
+            this.carShopDataEntities.ModelExtraswitches.Add(newItem);
+            this.carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="itemToBeDeleted">The item which wanted to be deleted</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        public void Delete(ModelExtraswitch itemToBeDeleted, CarShopDataEntities carShopDataEntities)
+        public void Delete(ModelExtraswitch itemToBeDeleted)
         {
-            carShopDataEntities.ModelExtraswitches.Remove(itemToBeDeleted);
-            carShopDataEntities.SaveChanges();
+            this.carShopDataEntities.ModelExtraswitches.Remove(itemToBeDeleted);
+            this.carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
-        /// <param name="carShopDataEntities">Data entites</param>
         /// <returns>The wanted type of entities</returns>
-        public IQueryable<ModelExtraswitch> ReadAll(CarShopDataEntities carShopDataEntities)
+        public IQueryable<ModelExtraswitch> ReadAll()
         {
-            return carShopDataEntities.ModelExtraswitches;
+            return this.carShopDataEntities.ModelExtraswitches;
         }
 
         /// <summary>
@@ -54,8 +62,7 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newId">>New  ID of the modelextraswitch</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        public void ChangeModelId(int id, int newId, CarShopDataEntities carShopDataEntities)
+        public void ChangeModelId(int id, int newId)
         {
         }
 
@@ -64,8 +71,7 @@ namespace CarShop.Repository
         /// </summary>
         /// <param name="id">Id of the model</param>
         /// <param name="newId">New  ID of the modelextraswitch</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        public void ChangeExtraId(int id, int newId, CarShopDataEntities carShopDataEntities)
+        public void ChangeExtraId(int id, int newId)
         {
         }
     }

@@ -33,8 +33,7 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            Mock<CarShopDataEntities> entityMock = new Mock<CarShopDataEntities>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, entityMock.Object);
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
 
             // Act
             var result = logic.ReadAll("10");
@@ -58,8 +57,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            Mock<CarShopDataEntities> entityMock = new Mock<CarShopDataEntities>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, entityMock.Object);
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
 
             List<CarBrand> carbrands = new List<CarBrand>()
             {
@@ -87,16 +86,35 @@ namespace CarShop.Logic.Tests
                 new ModelExtraswitch() { ModelExtraswitch_Id = 4, Model_Id = 2, Extra_Id = 2 }
             };
 
-            carbrandMock.Setup(x => x.ReadAll(entityMock.Object)).Returns(carbrands.AsQueryable);
-            modelMock.Setup(x => x.ReadAll(entityMock.Object)).Returns(models.AsQueryable);
-            extraMock.Setup(x => x.ReadAll(entityMock.Object)).Returns(extras.AsQueryable);
-            modelextraMock.Setup(x => x.ReadAll(entityMock.Object)).Returns(modelExtraswitches.AsQueryable);
+            carbrandMock.Setup(x => x.ReadAll()).Returns(carbrands.AsQueryable);
+            modelMock.Setup(x => x.ReadAll()).Returns(models.AsQueryable);
+            extraMock.Setup(x => x.ReadAll()).Returns(extras.AsQueryable);
+            modelextraMock.Setup(x => x.ReadAll()).Returns(modelExtraswitches.AsQueryable);
 
             // Act
             var result = logic.ReadAll(existingMenu.ToString());
 
             // Assert
             Assert.That(result, Is.Not.EqualTo(null));
+        }
+
+        /// <summary>
+        /// When creating a table with wrong data format exception is thrown.
+        /// </summary>
+        [Test]
+        public void WhenCreatingaTableWithWrongDataFormat_ExceptionIsThrown()
+        {
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            string testObject = "WRONG";
+
+            Assert.Throws<NoClassException>(() => logic.Create(testObject));
         }
     }
 }
