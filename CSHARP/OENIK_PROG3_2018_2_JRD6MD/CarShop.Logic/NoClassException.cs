@@ -1,9 +1,9 @@
-﻿// <copyright file="NullObjectException.cs" company="CarShop">
+﻿// <copyright file="NoClassException.cs" company="CarShop">
 // Copyright (c) CarShop. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace CarShop.Repository
+namespace CarShop.Logic
 {
     using System;
     using System.Collections.Generic;
@@ -13,31 +13,31 @@ namespace CarShop.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Exception which is thrown in case of a null object.
+    /// No class exception
     /// </summary>
     [Serializable]
-    public class NullObjectException : Exception, ISerializable
+    public class NoClassException : Exception, ISerializable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NullObjectException"/> class.
+        /// Initializes a new instance of the <see cref="NoClassException"/> class.
         /// </summary>
-        /// <param name="value">The object with null in it</param>
-        /// <param name="message">Message for the exception.</param>
-        public NullObjectException(object value, string message)
+        /// <param name="msg">Message of the exception</param>
+        /// <param name="value">Object for the exception</param>
+        public NoClassException(string msg, object value)
         {
-            this.EMessage = message;
-            this.NullObject = value;
+            this.Msg = msg;
+            this.ObjectException = value;
         }
 
         /// <summary>
-        /// Gets or sets exception message
+        /// Gets the message of the exception.
         /// </summary>
-        public string EMessage { get; set; }
+        public string Msg { get; }
 
         /// <summary>
-        /// Gets or sets exception nullobject
+        /// Gets the object of the exception.
         /// </summary>
-        public object NullObject { get; set; }
+        public object ObjectException { get; }
 
         /// <summary>
         /// Serialization
@@ -46,7 +46,7 @@ namespace CarShop.Repository
         /// <param name="context">Context</param>
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("TestProperty", this.EMessage);
+            info.AddValue("TestProperty", this.Msg);
             base.GetObjectData(info, context);
         }
     }
