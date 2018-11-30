@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NullObjectException.cs" />
     <Compile Include="ExtraRepository.cs" />
     <Compile Include="ICarBrandRepository.cs" />
     <Compile Include="IExtraRepository.cs" />
