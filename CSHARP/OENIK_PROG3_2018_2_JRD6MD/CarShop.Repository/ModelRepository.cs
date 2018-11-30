@@ -24,8 +24,8 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void Create(Model newItem, CarShopDataEntities carShopDataEntities)
         {
-                carShopDataEntities.Models.Add(newItem);
-                carShopDataEntities.SaveChanges();
+            carShopDataEntities.Models.Add(newItem);
+            carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void Delete(Model itemToBeDeleted, CarShopDataEntities carShopDataEntities)
         {
-                carShopDataEntities.Models.Remove(itemToBeDeleted);
-                carShopDataEntities.SaveChanges();
+            carShopDataEntities.Models.Remove(itemToBeDeleted);
+            carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
@@ -57,8 +57,9 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void ChangeName(int id, string newName, CarShopDataEntities carShopDataEntities)
         {
-                var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
-                extra.Model_Name = newName;
+            var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
+            extra.Model_Name = newName;
+            carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
@@ -69,8 +70,9 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void ChangeReleaseDay(int id, string newReleaseDay, CarShopDataEntities carShopDataEntities)
         {
-                var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
-                extra.Model_Release_Day = DateTime.Parse(newReleaseDay);
+            var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
+            extra.Model_Release_Day = DateTime.Parse(newReleaseDay);
+            carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
@@ -81,8 +83,9 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void ChangeEngineVolume(int id, int newEngineVolume, CarShopDataEntities carShopDataEntities)
         {
-                var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
-                extra.Model_Engine_Volume = newEngineVolume;
+            var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
+            extra.Model_Engine_Volume = newEngineVolume;
+            carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
@@ -93,8 +96,9 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void ChangeHorsePower(int id, int newHorsePower, CarShopDataEntities carShopDataEntities)
         {
-                var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
-                extra.Model_Horsepower = newHorsePower;
+            var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
+            extra.Model_Horsepower = newHorsePower;
+            carShopDataEntities.SaveChanges();
         }
 
         /// <summary>
@@ -105,8 +109,9 @@ namespace CarShop.Repository
         /// <param name="carShopDataEntities">Data entities</param>
         public void ChangeBasePrice(int id, int newBasePrice, CarShopDataEntities carShopDataEntities)
         {
-                var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
-                extra.Model_Base_Price = newBasePrice;
+            var extra = carShopDataEntities.Models.Single(x => x.Model_Id == id);
+            extra.Model_Base_Price = newBasePrice;
+            carShopDataEntities.SaveChanges();
         }
     }
 }
