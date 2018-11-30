@@ -18,100 +18,138 @@ namespace CarShop.Logic
     /// </summary>
     public class CarBrandLogic : ILogic
     {
+        private readonly ICarBrandRepository carBrandRepository;
+        private readonly IModelRepository modelRepository;
+        private readonly IExtraRepository extraRepository;
+        private readonly IModelExtraSwitchRepository modelExtraSwitchRepository;
+        private readonly CarShopDataEntities carShopDataEntities;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CarBrandLogic"/> class.
+        /// </summary>
+        /// <param name="carBrandRepository">Carbrand repo</param>
+        /// <param name="modelRepository">Model repo</param>
+        /// <param name="extraRepository">Extra repo</param>
+        /// <param name="modelExtraSwitchRepository">Modelextraswitch repo</param>
+        /// <param name="carShopDataEntities">Carshop data entities</param>
+        public CarBrandLogic(
+            ICarBrandRepository carBrandRepository,
+            IModelRepository modelRepository,
+            IExtraRepository extraRepository,
+            IModelExtraSwitchRepository modelExtraSwitchRepository,
+            CarShopDataEntities carShopDataEntities)
+        {
+            this.carBrandRepository = carBrandRepository;
+            this.modelRepository = modelRepository;
+            this.extraRepository = extraRepository;
+            this.modelExtraSwitchRepository = modelExtraSwitchRepository;
+            this.carShopDataEntities = carShopDataEntities;
+        }
+
         /// <summary>
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entities</param>
-        public void Create(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities)
+        public void Create(string mainMenuWaitingKey)
         {
-            // "Car Brand", "Models", "Extras", "Model-Extras"
-            if (mainMenuWaitingKey == "0")
+            try
             {
-                ICarBrandRepository icarbrandrepo = new CarBrandRepository();
-                Console.Write("New car brand name: ");
-                var brandname = Console.ReadLine();
-                Console.Write("\nNew car brand country name: ");
-                var countryname = Console.ReadLine();
-                Console.Write("\nNew car brand Url: ");
-                var url = Console.ReadLine();
-                Console.Write("\nNew car brand Foundation Year: ");
-                var foundationyear = int.Parse(Console.ReadLine());
-                Console.Write("\nNew car brand Yearly Traffic: ");
-                var yearlytraffic = Console.ReadLine();
-                CarBrand carBrand = new CarBrand()
+                // "Car Brand", "Models", "Extras", "Model-Extras"
+                if (mainMenuWaitingKey == "0")
                 {
-                    Carbrand_Name = brandname,
-                    Carbrand_Country_Name = countryname,
-                    Carbrand_Url = url,
-                    Carbrand_Foundation_Year = foundationyear,
-                    Carbrand_Yearly_Traffic = yearlytraffic
-                };
-                icarbrandrepo.Create(carBrand, carShopDataEntities);
-            }
-            else if (mainMenuWaitingKey == "1")
-            {
-                IModelRepository modelRepository = new ModelRepository();
-                Console.Write("New model carbrand ID: ");
-                var carbrandid = int.Parse(Console.ReadLine());
-                Console.Write("New model name: ");
-                var modelname = Console.ReadLine();
-                Console.Write("New model release day: e.g. 2018-11-23: ");
-                var releaseday = DateTime.Parse(Console.ReadLine());
-                Console.Write("New model engine volume: ");
-                var enginevolume = int.Parse(Console.ReadLine());
-                Console.Write("New model horsepower: ");
-                var horsepower = int.Parse(Console.ReadLine());
-                Console.Write("New model base price: ");
-                var baseprice = int.Parse(Console.ReadLine());
+                    // ICarBrandRepository icarbrandrepo = new CarBrandRepository();
+                    Console.Write("New car brand name: ");
+                    var brandname = Console.ReadLine();
+                    Console.Write("\nNew car brand country name: ");
+                    var countryname = Console.ReadLine();
+                    Console.Write("\nNew car brand Url: ");
+                    var url = Console.ReadLine();
+                    Console.Write("\nNew car brand Foundation Year (number e.g.: 1950): ");
+                    var foundationyear = int.Parse(Console.ReadLine());
+                    Console.Write("\nNew car brand Yearly Traffic: ");
+                    var yearlytraffic = Console.ReadLine();
+                    CarBrand carBrand = new CarBrand()
+                    {
+                        Carbrand_Name = brandname,
+                        Carbrand_Country_Name = countryname,
+                        Carbrand_Url = url,
+                        Carbrand_Foundation_Year = foundationyear,
+                        Carbrand_Yearly_Traffic = yearlytraffic
+                    };
+                    this.carBrandRepository.Create(carBrand, this.carShopDataEntities);
+                }
+                else if (mainMenuWaitingKey == "1")
+                {
+                    // IModelRepository modelRepository = new ModelRepository();
+                    Console.Write("New model carbrand ID (number): ");
+                    var carbrandid = int.Parse(Console.ReadLine());
+                    Console.Write("New model name: ");
+                    var modelname = Console.ReadLine();
+                    Console.Write("New model release day e.g. 2018-11-23: ");
+                    var releaseday = DateTime.Parse(Console.ReadLine());
+                    Console.Write("New model engine volume (number) e.g. 1900 : ");
+                    var enginevolume = int.Parse(Console.ReadLine());
+                    Console.Write("New model horsepower (number) e.g. 75 : ");
+                    var horsepower = int.Parse(Console.ReadLine());
+                    Console.Write("New model base price (number) e.g. 50000: ");
+                    var baseprice = int.Parse(Console.ReadLine());
 
-                Model model = new Model()
+                    Model model = new Model()
+                    {
+                        Carbrand_Id = carbrandid,
+                        Model_Name = modelname,
+                        Model_Release_Day = releaseday,
+                        Model_Engine_Volume = enginevolume,
+                        Model_Horsepower = horsepower,
+                        Model_Base_Price = baseprice
+                    };
+                    this.modelRepository.Create(model, this.carShopDataEntities);
+                }
+                else if (mainMenuWaitingKey == "2")
                 {
-                    Carbrand_Id = carbrandid,
-                    Model_Name = modelname,
-                    Model_Release_Day = releaseday,
-                    Model_Engine_Volume = enginevolume,
-                    Model_Horsepower = horsepower,
-                    Model_Base_Price = baseprice
-                };
-                modelRepository.Create(model, carShopDataEntities);
+                    // IExtraRepository extraRepository = new ExtraRepository();
+                    Console.Write("New extra caregory name: ");
+                    var categoryname = Console.ReadLine();
+                    Console.Write("New extra name: ");
+                    var extraname = Console.ReadLine();
+                    Console.Write("New extra price (number) e.g. 3000: ");
+                    var extraprice = int.Parse(Console.ReadLine());
+                    Console.Write("New extra color: ");
+                    var extracolor = Console.ReadLine();
+                    Console.Write("New extra multiple usage (0 == no, 1 == yes): ");
+                    var multipleUsage = int.Parse(Console.ReadLine());
+                    Extra extra = new Extra()
+                    {
+                        Extra_Category_Name = categoryname,
+                        Extra_Name = extraname,
+                        Extra_Price = extraprice,
+                        Extra_Color = extracolor,
+                        Extra_Multiple_Usage = multipleUsage
+                    };
+                    this.extraRepository.Create(extra, this.carShopDataEntities);
+                }
+                else if (mainMenuWaitingKey == "3")
+                {
+                    // IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
+                    Console.Write("New Model_Id (number): ");
+                    var modelid = int.Parse(Console.ReadLine());
+                    Console.Write("New Extra_Id (number): ");
+                    var extraid = int.Parse(Console.ReadLine());
+                    ModelExtraswitch modelExtraswitch = new ModelExtraswitch()
+                    {
+                        Model_Id = modelid,
+                        Extra_Id = extraid
+                    };
+                    this.modelExtraSwitchRepository.Create(modelExtraswitch, this.carShopDataEntities);
+                }
             }
-            else if (mainMenuWaitingKey == "2")
+            catch (NullObjectException exception)
             {
-                IExtraRepository extraRepository = new ExtraRepository();
-                Console.Write("New extra caregory name: ");
-                var categoryname = Console.ReadLine();
-                Console.Write("New extra name: ");
-                var extraname = Console.ReadLine();
-                Console.Write("New extra price: ");
-                var extraprice = int.Parse(Console.ReadLine());
-                Console.Write("New extra color: ");
-                var extracolor = Console.ReadLine();
-                Console.Write("New extra multiple usage (0 == no, 1 == yes): ");
-                var multipleUsage = int.Parse(Console.ReadLine());
-                Extra extra = new Extra()
-                {
-                    Extra_Category_Name = categoryname,
-                    Extra_Name = extraname,
-                    Extra_Price = extraprice,
-                    Extra_Color = extracolor,
-                    Extra_Multiple_Usage = multipleUsage
-                };
-                extraRepository.Create(extra, carShopDataEntities);
+                Console.WriteLine(exception.EMessage + " : " + exception.NullObject);
             }
-            else if (mainMenuWaitingKey == "3")
+            catch (FormatException exception)
             {
-                IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
-                Console.Write("New Model_Id: ");
-                var modelid = int.Parse(Console.ReadLine());
-                Console.Write("New Extra_Id: ");
-                var extraid = int.Parse(Console.ReadLine());
-                ModelExtraswitch modelExtraswitch = new ModelExtraswitch()
-                {
-                    Model_Id = modelid,
-                    Extra_Id = extraid
-                };
-                modelExtraSwitchRepository.Create(modelExtraswitch, carShopDataEntities);
+                Console.WriteLine("\n\nYou gave wrong format to the previous table data, try again!\n\nException message: " + exception.Message + "\n\n");
             }
         }
 
@@ -119,15 +157,14 @@ namespace CarShop.Logic
         /// Get all entities from the database, READ
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
         /// <returns>The wanted type of entities</returns>
-        public IQueryable ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities)
+        public IQueryable ReadAll(string mainMenuWaitingKey)
         {
             // { "Car Brand", "Models", "Extras", "Model-Extras" };
             if (mainMenuWaitingKey == "0")
             {
-                ICarBrandRepository icarbrandrepo = new CarBrandRepository();
-                IQueryable<string> everyCarbrand = icarbrandrepo.ReadAll(carShopDataEntities)
+                // ICarBrandRepository icarbrandrepo = new CarBrandRepository();
+                IQueryable<string> everyCarbrand = this.carBrandRepository.ReadAll(this.carShopDataEntities)
                     .Select(x =>
                     x.Carbrand_Id + "\t"
                     + x.Carbrand_Name + "\t"
@@ -140,8 +177,8 @@ namespace CarShop.Logic
             }
             else if (mainMenuWaitingKey == "1")
             {
-                IModelRepository imodelrepo = new ModelRepository();
-                IQueryable<string> everyModel = imodelrepo.ReadAll(carShopDataEntities)
+                // IModelRepository imodelrepo = new ModelRepository();
+                IQueryable<string> everyModel = this.modelRepository.ReadAll(this.carShopDataEntities)
                     .Select(x =>
                     x.Model_Id + "\t"
                     + x.Carbrand_Id + "\t"
@@ -155,16 +192,16 @@ namespace CarShop.Logic
             }
             else if (mainMenuWaitingKey == "2")
             {
-                IExtraRepository iextrarepo = new ExtraRepository();
-                IQueryable<string> everyExtra = iextrarepo.ReadAll(carShopDataEntities).Select(x => x.Extra_Id + "\t" + x.Extra_Category_Name
+                // IExtraRepository iextrarepo = new ExtraRepository();
+                IQueryable<string> everyExtra = this.extraRepository.ReadAll(this.carShopDataEntities).Select(x => x.Extra_Id + "\t" + x.Extra_Category_Name
                 + "\t" + x.Extra_Name + "\t" + x.Extra_Price + "\t" + x.Extra_Color + "\t" + x.Extra_Multiple_Usage);
 
                 return everyExtra;
             }
             else if (mainMenuWaitingKey == "3")
             {
-                IModelExtraSwitchRepository imodelExtraSwitch = new ModelExtraSwitchRepository();
-                IQueryable<string> everyExtraSwitch = imodelExtraSwitch.ReadAll(carShopDataEntities)
+                // IModelExtraSwitchRepository imodelExtraSwitch = new ModelExtraSwitchRepository();
+                IQueryable<string> everyExtraSwitch = this.modelExtraSwitchRepository.ReadAll(this.carShopDataEntities)
                     .Select(x =>
                     x.ModelExtraswitch_Id + "\t"
                     + x.Model_Id + "\t"
@@ -180,40 +217,39 @@ namespace CarShop.Logic
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
-        public void Delete(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities)
+        public void Delete(string mainMenuWaitingKey)
         {
             if (mainMenuWaitingKey == "0")
             {
-                ICarBrandRepository icarbrandrepo = new CarBrandRepository();
+                // ICarBrandRepository icarbrandrepo = new CarBrandRepository();
                 Console.WriteLine("Carbrand ID to be deleted: ");
                 var todelete = int.Parse(Console.ReadLine());
-                CarBrand carBrandToDelete = icarbrandrepo.ReadAll(carShopDataEntities).FirstOrDefault(x => x.Carbrand_Id == todelete);
-                icarbrandrepo.Delete(carBrandToDelete, carShopDataEntities);
+                CarBrand carBrandToDelete = this.carBrandRepository.ReadAll(this.carShopDataEntities).FirstOrDefault(x => x.Carbrand_Id == todelete);
+                this.carBrandRepository.Delete(carBrandToDelete, this.carShopDataEntities);
             }
             else if (mainMenuWaitingKey == "1")
             {
-                IModelRepository modelRepository = new ModelRepository();
+                // IModelRepository modelRepository = new ModelRepository();
                 Console.WriteLine("Model ID to be deleted: ");
                 var todelete = int.Parse(Console.ReadLine());
-                Model modelToDelete = modelRepository.ReadAll(carShopDataEntities).FirstOrDefault(x => x.Model_Id == todelete);
-                modelRepository.Delete(modelToDelete, carShopDataEntities);
+                Model modelToDelete = this.modelRepository.ReadAll(this.carShopDataEntities).FirstOrDefault(x => x.Model_Id == todelete);
+                this.modelRepository.Delete(modelToDelete, this.carShopDataEntities);
             }
             else if (mainMenuWaitingKey == "2")
             {
-                IExtraRepository extraRepository = new ExtraRepository();
+                // IExtraRepository extraRepository = new ExtraRepository();
                 Console.WriteLine("Extra ID to be deleted: ");
                 var todelete = int.Parse(Console.ReadLine());
-                Extra extraToDelete = extraRepository.ReadAll(carShopDataEntities).FirstOrDefault(x => x.Extra_Id == todelete);
-                extraRepository.Delete(extraToDelete, carShopDataEntities);
+                Extra extraToDelete = this.extraRepository.ReadAll(this.carShopDataEntities).FirstOrDefault(x => x.Extra_Id == todelete);
+                this.extraRepository.Delete(extraToDelete, this.carShopDataEntities);
             }
             else if (mainMenuWaitingKey == "3")
             {
-                IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
+                // IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
                 Console.WriteLine("ModelExtraSwitch ID to be deleted: ");
                 var todelete = int.Parse(Console.ReadLine());
-                ModelExtraswitch modelExtraSwitchToDelete = modelExtraSwitchRepository.ReadAll(carShopDataEntities).FirstOrDefault(x => x.ModelExtraswitch_Id == todelete);
-                modelExtraSwitchRepository.Delete(modelExtraSwitchToDelete, carShopDataEntities);
+                ModelExtraswitch modelExtraSwitchToDelete = this.modelExtraSwitchRepository.ReadAll(this.carShopDataEntities).FirstOrDefault(x => x.ModelExtraswitch_Id == todelete);
+                this.modelExtraSwitchRepository.Delete(modelExtraSwitchToDelete, this.carShopDataEntities);
             }
         }
 
@@ -221,8 +257,7 @@ namespace CarShop.Logic
         /// Updates a parameter of a database entity.
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
-        public void Update(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities)
+        public void Update(string mainMenuWaitingKey)
         {
             // { "Car Brand", "Models", "Extras", "Model-Extras" };
             if (mainMenuWaitingKey == "0")
@@ -241,8 +276,9 @@ namespace CarShop.Logic
                     var id = int.Parse(Console.ReadLine());
                     Console.Write("New Yearly Traffic: ");
                     var yearlyTraffic = Console.ReadLine();
-                    ICarBrandRepository icarBrandRepository = new CarBrandRepository();
-                    icarBrandRepository.ChangeYearlyTraffic(id, yearlyTraffic, carShopDataEntities);
+
+                    // ICarBrandRepository icarBrandRepository = new CarBrandRepository();
+                    this.carBrandRepository.ChangeYearlyTraffic(id, yearlyTraffic, this.carShopDataEntities);
                 }
                 else if (answer == "2")
                 {
@@ -298,8 +334,9 @@ namespace CarShop.Logic
                     var id = int.Parse(Console.ReadLine());
                     Console.Write("New Model_Base_Price: ");
                     var baseprice = int.Parse(Console.ReadLine());
-                    IModelRepository imodelRepository = new ModelRepository();
-                    imodelRepository.ChangeBasePrice(id, baseprice, carShopDataEntities);
+
+                    // IModelRepository imodelRepository = new ModelRepository();
+                    this.modelRepository.ChangeBasePrice(id, baseprice, this.carShopDataEntities);
                 }
             }
             else if (mainMenuWaitingKey == "2")
@@ -326,8 +363,9 @@ namespace CarShop.Logic
                     var id = int.Parse(Console.ReadLine());
                     Console.Write("New Extra_Price: ");
                     var extraprice = int.Parse(Console.ReadLine());
-                    IExtraRepository iextraRepository = new ExtraRepository();
-                    iextraRepository.ChangePrice(id, extraprice, carShopDataEntities);
+
+                    // IExtraRepository iextraRepository = new ExtraRepository();
+                    this.extraRepository.ChangePrice(id, extraprice, this.carShopDataEntities);
                 }
                 else if (answer == "4")
                 {
@@ -355,8 +393,9 @@ namespace CarShop.Logic
                     var id = int.Parse(Console.ReadLine());
                     Console.Write("New Model_Id: ");
                     var modelid = int.Parse(Console.ReadLine());
-                    IModelExtraSwitchRepository imodelExtraSwitchRepository = new ModelExtraSwitchRepository();
-                    imodelExtraSwitchRepository.ChangeModelId(id, modelid, carShopDataEntities);
+
+                    // IModelExtraSwitchRepository imodelExtraSwitchRepository = new ModelExtraSwitchRepository();
+                    this.modelExtraSwitchRepository.ChangeModelId(id, modelid, this.carShopDataEntities);
                 }
                 else if (answer == "2")
                 {
@@ -364,8 +403,9 @@ namespace CarShop.Logic
                     var id = int.Parse(Console.ReadLine());
                     Console.Write("New Extra_Id: ");
                     var extraid = int.Parse(Console.ReadLine());
-                    IModelExtraSwitchRepository imodelExtraSwitchRepository = new ModelExtraSwitchRepository();
-                    imodelExtraSwitchRepository.ChangeExtraId(id, extraid, carShopDataEntities);
+
+                    // IModelExtraSwitchRepository imodelExtraSwitchRepository = new ModelExtraSwitchRepository();
+                    this.modelExtraSwitchRepository.ChangeExtraId(id, extraid, this.carShopDataEntities);
                 }
             }
         }

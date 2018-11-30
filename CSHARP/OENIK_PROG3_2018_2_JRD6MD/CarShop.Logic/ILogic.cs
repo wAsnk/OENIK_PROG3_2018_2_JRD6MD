@@ -21,30 +21,26 @@ namespace CarShop.Logic
         /// Create a new item in the database, CREATE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
-        void Create(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
+        void Create(string mainMenuWaitingKey);
 
         /// <summary>
         /// Get all entities from the database, READ
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
         /// <returns>The wanted type of entities</returns>
-        IQueryable ReadAll(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
+        IQueryable ReadAll(string mainMenuWaitingKey);
 
         /// <summary>
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
-        void Delete(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
+        void Delete(string mainMenuWaitingKey);
 
         /// <summary>
         /// Updates a parameter of a database entity.
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <param name="carShopDataEntities">Data entity</param>
-        void Update(string mainMenuWaitingKey, CarShopDataEntities carShopDataEntities);
+        void Update(string mainMenuWaitingKey);
 
         /// <summary>
         /// Gives cars full price

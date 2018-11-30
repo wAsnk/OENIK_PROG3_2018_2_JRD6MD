@@ -12,6 +12,7 @@ namespace CarShop.Program
     using System.Threading.Tasks;
     using CarShop.Data;
     using CarShop.Logic;
+    using CarShop.Repository;
 
     /// <summary>
     /// The program start here and loads needed dlls.
@@ -19,28 +20,20 @@ namespace CarShop.Program
     public static class MainProgram
     {
         /// <summary>
-        /// Static save for car shop data entities.
-        /// </summary>
-        private static CarShopDataEntities carShopDataEntities;
-
-        /// <summary>
-        /// Gets or sets Car Shop Data Entities.
-        /// </summary>
-        public static CarShopDataEntities CarShopDataEntites
-        {
-            get { return carShopDataEntities; }
-            set { carShopDataEntities = value; }
-        }
-
-        /// <summary>
         /// Main program runs here
         /// </summary>
         public static void Main()
         {
-            ILogic logic = new CarBrandLogic();
-            carShopDataEntities = new CarShopDataEntities();
+            ICarBrandRepository carBrandRepository = new CarBrandRepository();
+            IModelRepository modelRepository = new ModelRepository();
+            IExtraRepository extraRepository = new ExtraRepository();
+            IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository();
+            CarShopDataEntities carShopDataEntities = new CarShopDataEntities();
+            ILogic logic = new CarBrandLogic(carBrandRepository, modelRepository, extraRepository, modelExtraSwitchRepository, carShopDataEntities);
+
             ConsoleMenu(logic);
-            carShopDataEntities.Dispose();
+
+            // carShopDataEntities.Dispose();
         }
 
         /// <summary>
@@ -78,12 +71,10 @@ namespace CarShop.Program
                 Console.WriteLine(menuBordersLeft + tabulatorAndText + menuBordersRight, "x.) To Exit");
                 Console.Write(menuBordersLeft + "Select Menu: ");
                 mainMenuWaitingKey = Console.ReadLine();
-                if (mainMenuWaitingKey != "x"
-                    && mainMenuWaitingKey != string.Empty
-                    && mainMenuWaitingKey != "a"
-                    && mainMenuWaitingKey != "b"
-                    && mainMenuWaitingKey != "c"
-                    && mainMenuWaitingKey != "d")
+                if (mainMenuWaitingKey == "0"
+                    || mainMenuWaitingKey == "1"
+                    || mainMenuWaitingKey == "2"
+                    || mainMenuWaitingKey == "3")
                 {
                     Console.Clear();
                     for (int i = 0; i < subMenuElements.Length; i++)
@@ -101,7 +92,7 @@ namespace CarShop.Program
                             {
                                 // Create
                                 Console.Clear();
-                                logic.Create(mainMenuWaitingKey, carShopDataEntities);
+                                logic.Create(mainMenuWaitingKey);
                                 Console.WriteLine("Press enter to continue.");
                                 Console.ReadLine();
                                 break;
@@ -111,7 +102,7 @@ namespace CarShop.Program
                             {
                                 // Read
                                 Console.Clear();
-                                WriteArray(logic.ReadAll(mainMenuWaitingKey, carShopDataEntities));
+                                WriteArray(logic.ReadAll(mainMenuWaitingKey));
                                 Console.WriteLine("Press enter to continue.");
                                 Console.ReadLine();
 
@@ -131,7 +122,7 @@ namespace CarShop.Program
                             {
                                 // Delete
                                 Console.Clear();
-                                logic.Delete(mainMenuWaitingKey, carShopDataEntities);
+                                logic.Delete(mainMenuWaitingKey);
                                 Console.WriteLine("Press enter to continue.");
                                 Console.ReadLine();
 
