@@ -12,7 +12,7 @@ namespace CarShop.Data
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Class Summary
+    /// Data class
     /// </summary>
     public class DataClass
     {

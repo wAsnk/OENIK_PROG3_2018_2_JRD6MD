@@ -16,7 +16,7 @@ namespace CarShop.Logic.Tests
     using NUnit.Framework;
 
     /// <summary>
-    /// SUMMARY HERE
+    /// Test class for business logic
     /// </summary>
     [TestFixture]
     public class LogicTest

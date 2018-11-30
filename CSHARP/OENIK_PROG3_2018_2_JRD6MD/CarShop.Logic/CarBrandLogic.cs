@@ -14,7 +14,7 @@ namespace CarShop.Logic
     using CarShop.Repository;
 
     /// <summary>
-    /// onreoi
+    /// Business logic class
     /// </summary>
     public class CarBrandLogic : ILogic
     {
@@ -136,8 +136,6 @@ namespace CarShop.Logic
                     + x.Carbrand_Foundation_Year + "\t"
                     + x.Carbrand_Yearly_Traffic);
                 Console.WriteLine("Carbrand_Id \t Carbrand_Name \t Carbrand_Url \t Carbrand_Foundation_Year \t Carbrand_Yearly_Traffic");
-
-                // var selected = everyCarbrand.Select(x => x.Carbrand_Id + "\t" + x.Carbrand_Name);
                 return everyCarbrand;
             }
             else if (mainMenuWaitingKey == "1")
@@ -153,7 +151,6 @@ namespace CarShop.Logic
                     + x.Model_Horsepower + "\t"
                     + x.Model_Base_Price);
 
-                // var selected = everyCarbrand.Select(x => x.Carbrand_Id + "\t" + x.Carbrand_Name);
                 return everyModel;
             }
             else if (mainMenuWaitingKey == "2")
@@ -162,7 +159,6 @@ namespace CarShop.Logic
                 IQueryable<string> everyExtra = iextrarepo.ReadAll(carShopDataEntities).Select(x => x.Extra_Id + "\t" + x.Extra_Category_Name
                 + "\t" + x.Extra_Name + "\t" + x.Extra_Price + "\t" + x.Extra_Color + "\t" + x.Extra_Multiple_Usage);
 
-                // var selected = everyCarbrand.Select(x => x.Carbrand_Id + "\t" + x.Carbrand_Name);
                 return everyExtra;
             }
             else if (mainMenuWaitingKey == "3")
@@ -174,7 +170,6 @@ namespace CarShop.Logic
                     + x.Model_Id + "\t"
                     + x.Extra_Id);
 
-                // var selected = everyCarbrand.Select(x => x.Carbrand_Id + "\t" + x.Carbrand_Name);
                 return everyExtraSwitch;
             }
 

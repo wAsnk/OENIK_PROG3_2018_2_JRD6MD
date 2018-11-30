@@ -14,17 +14,17 @@ namespace CarShop.Program
     using CarShop.Logic;
 
     /// <summary>
-    /// SUMMARY HERE
+    /// The program start here and loads needed dlls.
     /// </summary>
     public static class MainProgram
     {
         /// <summary>
-        /// dasfg
+        /// Static save for car shop data entities.
         /// </summary>
         private static CarShopDataEntities carShopDataEntities;
 
         /// <summary>
-        /// Gets or sets jfg
+        /// Gets or sets Car Shop Data Entities.
         /// </summary>
         public static CarShopDataEntities CarShopDataEntites
         {
@@ -164,6 +164,10 @@ namespace CarShop.Program
             }
         }
 
+        /// <summary>
+        /// Writes to the console the given IQueryable array.
+        /// </summary>
+        /// <param name="array">IQueryable which should be written on the console.</param>
         private static void WriteArray(IQueryable array)
         {
             foreach (var item in array)
