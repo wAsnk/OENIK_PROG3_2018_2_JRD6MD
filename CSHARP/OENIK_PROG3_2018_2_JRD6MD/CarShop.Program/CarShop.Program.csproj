@@ -77,6 +77,10 @@
       <Project>{694d8fff-f80e-49a8-b536-a8aab06d1d11}</Project>
       <Name>CarShop.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarShop.JavaWeb\CarShop.JavaWeb.csproj">
+      <Project>{cee36d21-160c-429d-9cb2-1c2f4f233007}</Project>
+      <Name>CarShop.JavaWeb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarShop.Logic\CarShop.Logic.csproj">
       <Project>{7fc90b14-4206-42df-9a95-2cc085cacc1f}</Project>
       <Name>CarShop.Logic</Name>

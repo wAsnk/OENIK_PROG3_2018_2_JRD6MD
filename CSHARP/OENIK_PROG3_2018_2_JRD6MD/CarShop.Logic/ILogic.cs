@@ -48,7 +48,8 @@ namespace CarShop.Logic
         /// <summary>
         /// Gives cars full price
         /// </summary>
-        void CarsFullPrice();
+        /// <returns>Returns cars full price</returns>
+        IQueryable CarsFullPrice();
 
         /// <summary>
         /// Gives the Average Base Price Per Brands

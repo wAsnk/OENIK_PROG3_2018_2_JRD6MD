@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Logic.Tests", "CarS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.Program", "CarShop.Program\CarShop.Program.csproj", "{CF7FBF94-D2F5-4FEE-9ED1-680E729CB83A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.JavaWeb", "CarShop.JavaWeb\CarShop.JavaWeb.csproj", "{CEE36D21-160C-429D-9CB2-1C2F4F233007}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CF7FBF94-D2F5-4FEE-9ED1-680E729CB83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF7FBF94-D2F5-4FEE-9ED1-680E729CB83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF7FBF94-D2F5-4FEE-9ED1-680E729CB83A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE36D21-160C-429D-9CB2-1C2F4F233007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE36D21-160C-429D-9CB2-1C2F4F233007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE36D21-160C-429D-9CB2-1C2F4F233007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE36D21-160C-429D-9CB2-1C2F4F233007}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

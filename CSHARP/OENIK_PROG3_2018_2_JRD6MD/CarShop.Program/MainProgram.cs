@@ -12,6 +12,7 @@ namespace CarShop.Program
     using System.Text;
     using System.Threading.Tasks;
     using CarShop.Data;
+    using CarShop.JavaWeb;
     using CarShop.Logic;
     using CarShop.Repository;
 
@@ -95,7 +96,7 @@ namespace CarShop.Program
                                 // Create
                                 Console.Clear();
                                 GetInfosForNewElement(mainMenuWaitingKey, logic);
-                                Console.WriteLine("Press enter to continue.");
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
                                 break;
                             }
@@ -105,7 +106,7 @@ namespace CarShop.Program
                                 // Read
                                 Console.Clear();
                                 WriteArray(logic.ReadAll(mainMenuWaitingKey));
-                                Console.WriteLine("Press enter to continue.");
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -116,7 +117,7 @@ namespace CarShop.Program
                                 // Update
                                 Console.Clear();
                                 UpdateParameters(mainMenuWaitingKey, logic);
-                                Console.WriteLine("Press enter to continue.");
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -127,7 +128,7 @@ namespace CarShop.Program
                                 // Delete
                                 Console.Clear();
                                 DeleteParameters(mainMenuWaitingKey, logic);
-                                Console.WriteLine("Press enter to continue.");
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -158,7 +159,8 @@ namespace CarShop.Program
                         case "a":
                             {
                                 Console.Clear();
-                                Console.WriteLine("Press enter to continue.");
+                                WriteArray(logic.CarsFullPrice());
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
                                 break;
                             }
@@ -166,7 +168,7 @@ namespace CarShop.Program
                         case "b":
                             {
                                 Console.Clear();
-                                Console.WriteLine("Press enter to continue.");
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -175,7 +177,7 @@ namespace CarShop.Program
                         case "c":
                             {
                                 Console.Clear();
-                                Console.WriteLine("Press enter to continue.");
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -184,8 +186,13 @@ namespace CarShop.Program
                         case "d":
                             {
                                 Console.Clear();
-                                Process p = Process.Start("http://localhost:8080/Arajanlatkero/");
-                                Console.WriteLine("Press enter to continue.");
+
+                                // Process p = Process.Start("http://localhost:8080/Arajanlatkero/");
+                                // Java.DotheJava();
+                                string url = "http://users.nik.uni-obuda.hu/bpeter/Data/war_of_westeros.xml";
+                                Java.GetData(url);
+
+                                Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -211,7 +218,9 @@ namespace CarShop.Program
         {
             foreach (var item in array)
             {
+                Console.WriteLine("-------------------------------------------------------------------");
                 Console.WriteLine(item);
+                Console.WriteLine("-------------------------------------------------------------------");
             }
         }
 

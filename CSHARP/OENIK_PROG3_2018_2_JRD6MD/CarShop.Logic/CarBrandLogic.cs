@@ -79,7 +79,7 @@ namespace CarShop.Logic
         /// Get all entities from the database, READ
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        /// <returns>The wanted type of entities</returns>
+        /// <returns>Every entity in the given repository</returns>
         public IQueryable ReadAll(string mainMenuWaitingKey)
         {
             // { "Car Brand", "Models", "Extras", "Model-Extras" };
@@ -230,8 +230,64 @@ namespace CarShop.Logic
         /// <summary>
         /// Gives cars full price
         /// </summary>
-        public void CarsFullPrice()
+        /// <returns>Cars full Price</returns>
+        public IQueryable CarsFullPrice()
         {
+            // Legyen lehetőségünk kiírni minden autóhoz az autó TELJES árát is: alapár + a rajta lévő extrák összára
+            var carbrands = this.carBrandRepository.ReadAll();
+            var extras = this.extraRepository.ReadAll();
+            var models = this.modelRepository.ReadAll();
+            var modelextraswitch = this.modelExtraSwitchRepository.ReadAll();
+
+            /*
+            var preResult = modelextraswitch.Join(extras, x => x.Extra_Id, y => y.Extra_Id, (e, d) => new
+            {
+                EXTRAID = e.Extra_Id,
+                EXTRAPRICE = d.Extra_Price
+            }).Join(modelextraswitch, z => z.EXTRAID, c => c.Extra_Id, (a, b) => new
+            {
+                EXTRAID = a.EXTRAID,
+                EXTRAPRICE = a.EXTRAPRICE,
+                MODELID = b.Model_Id
+            }).Join(models, a => a.MODELID, s => s.Model_Id, (a, b) => new
+            {
+                EXTRAID = a.EXTRAID,
+                EXTRAPRICE = a.EXTRAPRICE,
+                BASEPRICE = b.Model_Base_Price,
+                CARID = b.Carbrand_Id
+            }).Join(carbrands, x => x.CARID, y => y.Carbrand_Id, (a, b) => new
+            {
+                EXTRAID = a.EXTRAID,
+                EXTRAPRICE = a.EXTRAPRICE,
+                BASEPRICE = a.BASEPRICE,
+                FULLPRICE = a.EXTRAPRICE + a.BASEPRICE,
+                CARNAME = b.Carbrand_Name
+            }).GroupBy(x => x.FULLPRICE);
+            */
+
+            var prepreResult = modelextraswitch.Join(models, x => x.Model_Id, y => y.Model_Id, (e, d) => new
+            {
+                MODELID = d.Model_Id,
+                MODELNAME = d.Model_Name,
+                EXTRAID = e.Extra_Id,
+                MODELPRICE = d.Model_Base_Price
+            }).Join(extras, z => z.EXTRAID, c => c.Extra_Id, (a, b) => new
+            {
+                MODELID = a.MODELID,
+                MODELNAME = a.MODELNAME,
+                EXTRAID = a.EXTRAID,
+                FULLPRICE = a.MODELPRICE + b.Extra_Price
+            }).GroupBy(x => x.MODELNAME);
+
+            // var result = preResult.Select(x => "Carname: " + x.CARNAME + "Fullprice: " + x.FULLPRICE);
+            var preresult = prepreResult.Select(x => new
+            {
+                MODELNAME = x.Key,
+                Price = x.Sum(y => y.FULLPRICE)
+            });
+
+            var result = preresult.Select(x => "Model name: " + x.MODELNAME + "\n\t Price with all extra on it: " + x.Price + " euro");
+            return result;
         }
 
         /// <summary>
@@ -239,6 +295,7 @@ namespace CarShop.Logic
         /// </summary>
         public void AverageBasePrice_PerBrands()
         {
+            // Legyen lehetőségünk kiírni márkánként az autók átlagos alapárát
         }
 
         /// <summary>
@@ -246,6 +303,7 @@ namespace CarShop.Logic
         /// </summary>
         public void ExtraCategoryUseage()
         {
+            // Legyen lehetőségünk kiírni az extrák kategórianeveként csoportosítva azt, hogy melyik kategória hányszor van autókhoz kapcsolva
         }
 
         /// <summary>
