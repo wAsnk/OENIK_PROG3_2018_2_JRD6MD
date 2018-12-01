@@ -1,5 +1,6 @@
 var class_car_shop_1_1_repository_1_1_model_repository =
 [
+    [ "ModelRepository", "class_car_shop_1_1_repository_1_1_model_repository.html#a722f8233d997c25bac9aebb4e3066163", null ],
     [ "ChangeBasePrice", "class_car_shop_1_1_repository_1_1_model_repository.html#afd74f3bfad28b3bcc037d54aa8be8df6", null ],
     [ "ChangeEngineVolume", "class_car_shop_1_1_repository_1_1_model_repository.html#a1f8ebbffe441583fc13980a1276c3317", null ],
     [ "ChangeHorsePower", "class_car_shop_1_1_repository_1_1_model_repository.html#a776841d0db4ba2c5a928827d41770088", null ],

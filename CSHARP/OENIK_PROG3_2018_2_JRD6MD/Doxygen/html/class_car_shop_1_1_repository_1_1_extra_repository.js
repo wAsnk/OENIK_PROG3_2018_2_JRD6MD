@@ -1,5 +1,6 @@
 var class_car_shop_1_1_repository_1_1_extra_repository =
 [
+    [ "ExtraRepository", "class_car_shop_1_1_repository_1_1_extra_repository.html#aa7bb0a9002e8cca9517d6b9364f860fc", null ],
     [ "ChangeCategoryName", "class_car_shop_1_1_repository_1_1_extra_repository.html#a832d21a92280707fa2904dbf39c7ec18", null ],
     [ "ChangeColor", "class_car_shop_1_1_repository_1_1_extra_repository.html#a0f55a19b240d5ad2494124fc2a4ec8f5", null ],
     [ "ChangeMultipleUsage", "class_car_shop_1_1_repository_1_1_extra_repository.html#a734c035f5ddeba6bd0e1dd2a36f1daa7", null ],

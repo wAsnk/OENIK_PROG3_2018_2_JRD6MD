@@ -1,5 +1,6 @@
 var class_car_shop_1_1_repository_1_1_car_brand_repository =
 [
+    [ "CarBrandRepository", "class_car_shop_1_1_repository_1_1_car_brand_repository.html#a44ad1cec1286f0544cf8f9a86315f7a1", null ],
     [ "ChangeCountry", "class_car_shop_1_1_repository_1_1_car_brand_repository.html#a80f3183334ff73851edb566fae10ddaf", null ],
     [ "ChangeFoundationYear", "class_car_shop_1_1_repository_1_1_car_brand_repository.html#a03c716c6e6b106c343f0da438f1b1ae0", null ],
     [ "ChangeName", "class_car_shop_1_1_repository_1_1_car_brand_repository.html#aff94161559e4fb5dac677366adc93775", null ],

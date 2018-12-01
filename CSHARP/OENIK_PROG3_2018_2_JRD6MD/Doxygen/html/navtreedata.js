@@ -24,8 +24,8 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "OENIK_PROG3_2018_2_JRD6MD", "index.html", [
-    [ "Castle Core Changelog", "md__c_1__prog3__c_s_h_a_r_p__o_e_n_i_k__p_r_o_g3_2018_2__j_r_d6_m_d_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html", null ],
-    [ "NUnit 3.11 - October 11, 2018", "md__c_1__prog3__c_s_h_a_r_p__o_e_n_i_k__p_r_o_g3_2018_2__j_r_d6_m_d_packages__n_unit_83_811_80__c_h_a_n_g_e_s.html", null ],
+    [ "Castle Core Changelog", "md__d_1__prog3__c_s_h_a_r_p__o_e_n_i_k__p_r_o_g3_2018_2__j_r_d6_m_d_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html", null ],
+    [ "NUnit 3.11 - October 11, 2018", "md__d_1__prog3__c_s_h_a_r_p__o_e_n_i_k__p_r_o_g3_2018_2__j_r_d6_m_d_packages__n_unit_83_811_80__c_h_a_n_g_e_s.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -35,7 +35,8 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -46,7 +47,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_car_brand_8cs_source.html"
+"_car_brand_logic_8cs_source.html",
+"md__d_1__prog3__c_s_h_a_r_p__o_e_n_i_k__p_r_o_g3_2018_2__j_r_d6_m_d_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
