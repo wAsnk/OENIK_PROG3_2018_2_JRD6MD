@@ -7,6 +7,7 @@ namespace CarShop.Program
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -151,9 +152,53 @@ namespace CarShop.Program
                     || mainMenuWaitingKey == "c"
                     || mainMenuWaitingKey == "d")
                 {
-                    Console.Clear();
-                    Console.WriteLine("Not ready Yet");
-                    System.Threading.Thread.Sleep(1000);
+                    switch (mainMenuWaitingKey)
+                    {
+                        // "Create", "Read", "Update", "Delete"
+                        case "a":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+                                break;
+                            }
+
+                        case "b":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+
+                                break;
+                            }
+
+                        case "c":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+
+                                break;
+                            }
+
+                        case "d":
+                            {
+                                Console.Clear();
+                                Process p = Process.Start("http://localhost:8080/Arajanlatkero/");
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+
+                                break;
+                            }
+
+                        default:
+                            {
+                                Console.Clear();
+                                Console.WriteLine("There is no such menu.");
+                                System.Threading.Thread.Sleep(1000);
+                                break;
+                            }
+                    }
                 }
             }
         }
