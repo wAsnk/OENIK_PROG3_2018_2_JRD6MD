@@ -11,9 +11,9 @@ package Model;
  */
 public class Auto {
     String autonev;
-    String ar;
+    int ar;
 
-    public Auto(String autonev, String ar) {
+    public Auto(String autonev, int ar) {
         this.autonev = autonev;
         this.ar = ar;
     }
@@ -22,7 +22,7 @@ public class Auto {
         return autonev;
     }
 
-    public String getAr() {
+    public int getAr() {
         return ar;
     }
     

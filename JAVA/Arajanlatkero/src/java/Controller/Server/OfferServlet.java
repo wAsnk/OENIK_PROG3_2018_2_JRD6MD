@@ -6,8 +6,10 @@
 package Controller.Server;
 
 import Controller.Autotarolo;
+import Model.Auto;
 import Model.Vasarlo;
 import java.io.IOException;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,10 +57,32 @@ public class OfferServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+    @Override    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        request.setCharacterEncoding("UTF8");
+        response.setCharacterEncoding("UTF8");
+        
+        HttpSession session = request.getSession();
+        String nev = request.getParameter("nev");
+        session.setAttribute("name", nev);
+        String carBrand = request.getParameter("carbrand");
+        String priceString = request.getParameter("price");
+        int price = Integer.parseInt(priceString);
+        
+        int maxPrice = price + 1000;
+        int minPrice = price - 1000;
+        Random rnd = new Random();
+        
+        Autotarolo at = new Autotarolo();
+        session.setAttribute("autok", at);
+        for (int i = 0; i < 5; i++) {
+            int newPrice = rnd.nextInt(maxPrice + 1 - minPrice) + minPrice;
+            at.addAuto(new Auto(carBrand, newPrice));            
+        }
+        response.sendRedirect(response.encodeRedirectURL("xml_file.jsp"));
+        
     }
 
     /**

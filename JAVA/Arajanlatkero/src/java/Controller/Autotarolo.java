@@ -25,7 +25,7 @@ public class Autotarolo {
     }
 
     
-    public void addUgyfel(Auto auto){
+    public void addAuto(Auto auto){
         if (!tarolo.contains(auto)) {
             tarolo.add(auto);
         }

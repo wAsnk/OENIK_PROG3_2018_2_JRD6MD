@@ -26,7 +26,7 @@
     <body>        
         <% if (vasarlo == null) { %>
         <h1>Offer request</h1>
-        <form method="POST" action="OfferServlet">
+        <form method="GET" action="OfferServlet">
             Name: <input type="text" name="nev"> <br>
             Car brand: <input type="text" name="carbrand"> <br>
             Full price: <input type="text" name="price"> <br>
