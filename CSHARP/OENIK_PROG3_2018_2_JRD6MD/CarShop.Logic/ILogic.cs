@@ -34,7 +34,8 @@ namespace CarShop.Logic
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        void Delete(string mainMenuWaitingKey);
+        /// <param name="idToDelete">Id of the data to be deleted.</param>
+        void Delete(string mainMenuWaitingKey, int idToDelete);
 
         /// <summary>
         /// Updates a parameter of a database entity.

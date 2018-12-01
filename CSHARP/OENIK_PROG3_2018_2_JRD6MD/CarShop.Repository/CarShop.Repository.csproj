@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoIdFoundException.cs" />
     <Compile Include="NullObjectException.cs" />
     <Compile Include="ExtraRepository.cs" />
     <Compile Include="ICarBrandRepository.cs" />

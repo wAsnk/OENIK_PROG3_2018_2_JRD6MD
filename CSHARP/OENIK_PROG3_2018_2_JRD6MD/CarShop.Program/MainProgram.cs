@@ -114,8 +114,10 @@ namespace CarShop.Program
                             {
                                 // Update
                                 Console.Clear();
-                                Console.WriteLine("Not ready Yet");
-                                System.Threading.Thread.Sleep(1000);
+                                UpdateParameters(mainMenuWaitingKey, logic);
+                                Console.WriteLine("Press enter to continue.");
+                                Console.ReadLine();
+
                                 break;
                             }
 
@@ -123,7 +125,7 @@ namespace CarShop.Program
                             {
                                 // Delete
                                 Console.Clear();
-                                logic.Delete(mainMenuWaitingKey);
+                                DeleteParameters(mainMenuWaitingKey, logic);
                                 Console.WriteLine("Press enter to continue.");
                                 Console.ReadLine();
 
@@ -283,45 +285,112 @@ namespace CarShop.Program
         /// <param name="logic">ILogic interface</param>
         private static void UpdateParameters(string mainMenuWaitingKey, ILogic logic)
         {
-            // { "Car Brand", "Models", "Extras", "Model-Extras" };
-            if (mainMenuWaitingKey == "0")
+            try
             {
-                Console.Write("Update Carbrand_Yearly_Traffic:");
-                Console.Write("Car Brand ID: ");
-                int id = int.Parse(Console.ReadLine());
-                Console.Write("New Yearly Traffic: ");
-                string yearlyTraffic = Console.ReadLine();
+                // { "Car Brand", "Models", "Extras", "Model-Extras" };
+                if (mainMenuWaitingKey == "0")
+                {
+                    Console.Write("Update Carbrand_Yearly_Traffic:");
+                    Console.Write("Car Brand ID: ");
+                    int id = int.Parse(Console.ReadLine());
+                    Console.Write("New Yearly Traffic: ");
+                    string yearlyTraffic = Console.ReadLine();
 
-                logic.Update(mainMenuWaitingKey, id, yearlyTraffic);
-            }
-            else if (mainMenuWaitingKey == "1")
-            {
-                Console.WriteLine("Update Model_Base_Price:");
-                Console.Write("Model ID: ");
-                var id = int.Parse(Console.ReadLine());
-                Console.Write("New Model_Base_Price: ");
-                var baseprice = Console.ReadLine();
+                    logic.Update(mainMenuWaitingKey, id, yearlyTraffic);
+                }
+                else if (mainMenuWaitingKey == "1")
+                {
+                    Console.WriteLine("Update Model_Base_Price:");
+                    Console.Write("Model ID: ");
+                    var id = int.Parse(Console.ReadLine());
+                    Console.Write("New Model_Base_Price: ");
+                    var baseprice = Console.ReadLine();
 
-                logic.Update(mainMenuWaitingKey, id, baseprice);
-            }
-            else if (mainMenuWaitingKey == "2")
-            {
-                Console.WriteLine("Update Extra_Price:");
-                Console.Write("Update Extra of Extra ID: ");
-                var id = int.Parse(Console.ReadLine());
-                Console.Write("New Extra_Price: ");
-                var extraprice = Console.ReadLine();
+                    logic.Update(mainMenuWaitingKey, id, baseprice);
+                }
+                else if (mainMenuWaitingKey == "2")
+                {
+                    Console.WriteLine("Update Extra_Price:");
+                    Console.Write("Update Extra of Extra ID: ");
+                    var id = int.Parse(Console.ReadLine());
+                    Console.Write("New Extra_Price: ");
+                    var extraprice = Console.ReadLine();
 
-                logic.Update(mainMenuWaitingKey, id, extraprice);
+                    logic.Update(mainMenuWaitingKey, id, extraprice);
+                }
+                else if (mainMenuWaitingKey == "3")
+                {
+                    Console.WriteLine("Update Model_Id:");
+                    Console.Write("ModelExtraSwitch ID: ");
+                    var id = int.Parse(Console.ReadLine());
+                    Console.Write("New Model_Id: ");
+                    var modelid = Console.ReadLine();
+                    logic.Update(mainMenuWaitingKey, id, modelid);
+                }
             }
-            else if (mainMenuWaitingKey == "3")
+            catch (NoIdFoundException exception)
             {
-                Console.WriteLine("Update Model_Id:");
-                Console.Write("ModelExtraSwitch ID: ");
-                var id = int.Parse(Console.ReadLine());
-                Console.Write("New Model_Id: ");
-                var modelid = Console.ReadLine();
-                logic.Update(mainMenuWaitingKey, id, modelid);
+                Console.WriteLine(exception.Msg);
+            }
+            catch (NoClassException exception)
+            {
+                Console.WriteLine(exception.Msg);
+            }
+            catch (NullObjectException exception)
+            {
+                Console.WriteLine(exception.EMessage);
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine("\n\nYou gave wrong format to the previous table data, try again!\n\nException message: " + exception.Message + "\n\n");
+            }
+        }
+
+        /// <summary>
+        /// Removes an item from the database DELETE
+        /// </summary>
+        /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
+        /// <param name="logic">ILogic interface</param>
+        private static void DeleteParameters(string mainMenuWaitingKey, ILogic logic)
+        {
+            try
+            {
+                if (mainMenuWaitingKey == "0")
+                {
+                    Console.WriteLine("Carbrand ID to be deleted: ");
+                    var idToDelete = int.Parse(Console.ReadLine());
+                    logic.Delete(mainMenuWaitingKey, idToDelete);
+                }
+                else if (mainMenuWaitingKey == "1")
+                {
+                    Console.WriteLine("Model ID to be deleted: ");
+                    var idToDelete = int.Parse(Console.ReadLine());
+                    logic.Delete(mainMenuWaitingKey, idToDelete);
+                }
+                else if (mainMenuWaitingKey == "2")
+                {
+                    Console.WriteLine("Extra ID to be deleted: ");
+                    var idToDelete = int.Parse(Console.ReadLine());
+                    logic.Delete(mainMenuWaitingKey, idToDelete);
+                }
+                else if (mainMenuWaitingKey == "3")
+                {
+                    Console.WriteLine("ModelExtraSwitch ID to be deleted: ");
+                    var idToDelete = int.Parse(Console.ReadLine());
+                    logic.Delete(mainMenuWaitingKey, idToDelete);
+                }
+            }
+            catch (NoClassException exception)
+            {
+                Console.WriteLine(exception.Msg);
+            }
+            catch (NullObjectException exception)
+            {
+                Console.WriteLine(exception.EMessage);
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine("\n\nYou gave wrong format to the previous table data, try again!\n\nException message: " + exception.Message + "\n\n");
             }
         }
     }

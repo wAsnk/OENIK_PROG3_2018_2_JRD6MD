@@ -23,7 +23,7 @@ namespace CarShop.Logic.Tests
     public class LogicTest
     {
         /// <summary>
-        /// When selected a not existing menu it returns null
+        /// When selected a not existing menu it returns null, READ
         /// </summary>
         [Test]
         public void WhenSelectedANotExistingMenu_ReturnNull()
@@ -43,7 +43,7 @@ namespace CarShop.Logic.Tests
         }
 
         /// <summary>
-        /// When selected an existing menu it returns not null
+        /// When selected an existing menu it returns not null, READ
         /// </summary>
         /// <param name="existingMenu">An existing menu which represents a table</param>
         [TestCase(0)]
@@ -99,12 +99,11 @@ namespace CarShop.Logic.Tests
         }
 
         /// <summary>
-        /// When creating a table with wrong data format exception is thrown.
+        /// When creating a table with wrong data format exception is thrown. CREATE
         /// </summary>
         [Test]
         public void WhenCreatingaTableWithWrongDataFormat_ExceptionIsThrown()
         {
-            // Arrange
             Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
@@ -115,6 +114,170 @@ namespace CarShop.Logic.Tests
             string testObject = "WRONG";
 
             Assert.Throws<NoClassException>(() => logic.Create(testObject));
+        }
+
+        /// <summary>
+        /// Creating CarBrand without exception thrown. CREATE
+        /// </summary>
+        [Test]
+        public void WhenCreatingCarBrandData_WithoutError_NoExceptionThrown()
+        {
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            CarBrand carBrand = new CarBrand() { Carbrand_Id = 1, Carbrand_Name = "Ferrari", Carbrand_Country_Name = "Italy", Carbrand_Url = "https://ferrari.com", Carbrand_Foundation_Year = 1952, Carbrand_Yearly_Traffic = "56 billion euro" };
+
+            // ASSERT
+            Assert.That(() => logic.Create(carBrand), Throws.Nothing);
+            carbrandMock.Verify(x => x.Create(It.IsAny<CarBrand>()), Times.Once);
+        }
+
+        /// <summary>
+        /// Creating Model without exception thrown. CREATE
+        /// </summary>
+        [Test]
+        public void WhenCreatingModelData_WithoutError_NoExceptionThrown()
+        {
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            Model model = new Model() { Model_Id = 1, Carbrand_Id = 1, Model_Name = "Model1", Model_Release_Day = DateTime.Parse("2018-11-23"), Model_Engine_Volume = 123123, Model_Horsepower = 3000, Model_Base_Price = 20000 };
+
+            // ASSERT
+            Assert.That(() => logic.Create(model), Throws.Nothing);
+            modelMock.Verify(x => x.Create(It.IsAny<Model>()), Times.Once);
+        }
+
+        /// <summary>
+        /// Creating Extra without exception thrown. CREATE
+        /// </summary>
+        [Test]
+        public void WhenCreatingExtraData_WithoutError_NoExceptionThrown()
+        {
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            Extra extra = new Extra() { Extra_Id = 1, Extra_Category_Name = "Name1", Extra_Name = "Name1-1", Extra_Price = 3000, Extra_Color = "blue", Extra_Multiple_Usage = 0 };
+
+            // ASSERT
+            Assert.That(() => logic.Create(extra), Throws.Nothing);
+            extraMock.Verify(x => x.Create(It.IsAny<Extra>()), Times.Once);
+        }
+
+        /// <summary>
+        /// Creating ModelExtraSwitch without exception thrown. CREATE
+        /// </summary>
+        [Test]
+        public void WhenCreatingModelExtraSwitchData_WithoutError_NoExceptionThrown()
+        {
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            ModelExtraswitch modelExtraswitch = new ModelExtraswitch() { ModelExtraswitch_Id = 1, Model_Id = 1, Extra_Id = 1 };
+
+            // ASSERT
+            Assert.That(() => logic.Create(modelExtraswitch), Throws.Nothing);
+            modelextraMock.Verify(x => x.Create(It.IsAny<ModelExtraswitch>()), Times.Once);
+        }
+
+        /// <summary>
+        /// When deleting a not existing ID table data it throws exception. DELETE
+        /// </summary>
+        /// <param name="menu">Main menu key</param>
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        public void WhenDeletingNotExistingId_ExceptionThrown(int menu)
+        {
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            List<CarBrand> carbrands = new List<CarBrand>()
+            {
+                new CarBrand() { Carbrand_Id = 1, Carbrand_Name = "Ferrari", Carbrand_Country_Name = "Italy", Carbrand_Url = "https://ferrari.com", Carbrand_Foundation_Year = 1952, Carbrand_Yearly_Traffic = "56 billion euro" },
+                new CarBrand() { Carbrand_Id = 2, Carbrand_Name = "Fiat", Carbrand_Country_Name = "Italy", Carbrand_Url = "https://fiat.com", Carbrand_Foundation_Year = 1960, Carbrand_Yearly_Traffic = "30 billion euro" }
+            };
+
+            List<Model> models = new List<Model>()
+            {
+                new Model() { Model_Id = 1, Carbrand_Id = 1, Model_Name = "Model1", Model_Release_Day = DateTime.Parse("2018-11-23"), Model_Engine_Volume = 123123, Model_Horsepower = 3000, Model_Base_Price = 20000 },
+                new Model() { Model_Id = 2, Carbrand_Id = 2, Model_Name = "Model2", Model_Release_Day = DateTime.Parse("2018-11-24"), Model_Engine_Volume = 321321, Model_Horsepower = 4000, Model_Base_Price = 30000 }
+            };
+
+            List<Extra> extras = new List<Extra>()
+            {
+                new Extra() { Extra_Id = 1, Extra_Category_Name = "Name1", Extra_Name = "Name1-1", Extra_Price = 3000, Extra_Color = "blue", Extra_Multiple_Usage = 0 },
+                new Extra() { Extra_Id = 2, Extra_Category_Name = "Name2", Extra_Name = "Name2-1", Extra_Price = 4000, Extra_Color = "red", Extra_Multiple_Usage = 1 }
+            };
+
+            List<ModelExtraswitch> modelExtraswitches = new List<ModelExtraswitch>()
+            {
+                new ModelExtraswitch() { ModelExtraswitch_Id = 1, Model_Id = 1, Extra_Id = 1 },
+                new ModelExtraswitch() { ModelExtraswitch_Id = 2, Model_Id = 1, Extra_Id = 2 },
+                new ModelExtraswitch() { ModelExtraswitch_Id = 3, Model_Id = 2, Extra_Id = 1 },
+                new ModelExtraswitch() { ModelExtraswitch_Id = 4, Model_Id = 2, Extra_Id = 2 }
+            };
+
+            carbrandMock.Setup(x => x.ReadAll()).Returns(carbrands.AsQueryable);
+            modelMock.Setup(x => x.ReadAll()).Returns(models.AsQueryable);
+            extraMock.Setup(x => x.ReadAll()).Returns(extras.AsQueryable);
+            modelextraMock.Setup(x => x.ReadAll()).Returns(modelExtraswitches.AsQueryable);
+
+            Assert.Throws<NoIdFoundException>(() => logic.Delete(menu.ToString(), 10));
+        }
+
+        /// <summary>
+        /// When deleting a not existing table it throws exception. DELETE
+        /// </summary>
+        /// <param name="menu">Main menu key</param>
+        [TestCase(10)]
+        public void WhenDeletingNotExistingTable_ExceptionThrown(int menu)
+        {
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            Assert.Throws<NoClassException>(() => logic.Delete(menu.ToString(), 1));
+        }
+
+        /// <summary>
+        /// When updating a not existing table it throws exception. UPDATE
+        /// </summary>
+        /// <param name="menu">Main menu key</param>
+        [TestCase(10)]
+        public void WhenUpdatingNotExistingTable_ExceptionThrown(int menu)
+        {
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            Assert.Throws<NoClassException>(() => logic.Update(menu.ToString(), 1, "Updatedata"));
         }
     }
 }

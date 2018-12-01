@@ -63,7 +63,7 @@ namespace CarShop.Repository
         {
             if (itemToBeDeleted == null)
             {
-                throw new NullObjectException(itemToBeDeleted, "Null containing deletable carbrand");
+                throw new NullObjectException(itemToBeDeleted, "No such an ID.");
             }
             else
             {
@@ -79,7 +79,7 @@ namespace CarShop.Repository
         /// <param name="newName">New name of the carbrand</param>
         public void ChangeName(int id, string newName)
         {
-            var carbrand = this.carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
+            var carbrand = this.carShopDataEntities.CarBrands.FirstOrDefault(x => x.Carbrand_Id == id);
             carbrand.Carbrand_Name = newName;
             this.carShopDataEntities.SaveChanges();
         }
@@ -91,7 +91,7 @@ namespace CarShop.Repository
         /// <param name="newCountry">New country of the car brand</param>
         public void ChangeCountry(int id, string newCountry)
         {
-            var carbrand = this.carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
+            var carbrand = this.carShopDataEntities.CarBrands.FirstOrDefault(x => x.Carbrand_Id == id);
             carbrand.Carbrand_Country_Name = newCountry;
             this.carShopDataEntities.SaveChanges();
         }
@@ -103,7 +103,7 @@ namespace CarShop.Repository
         /// <param name="newUrl">New URL of the car brand</param>
         public void ChangeUrl(int id, string newUrl)
         {
-            var carbrand = this.carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
+            var carbrand = this.carShopDataEntities.CarBrands.FirstOrDefault(x => x.Carbrand_Id == id);
             carbrand.Carbrand_Url = newUrl;
             this.carShopDataEntities.SaveChanges();
         }
@@ -115,7 +115,7 @@ namespace CarShop.Repository
         /// <param name="newFoundationYear">New Foundation Year of the car brand</param>
         public void ChangeFoundationYear(int id, int newFoundationYear)
         {
-            var carbrand = this.carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
+            var carbrand = this.carShopDataEntities.CarBrands.FirstOrDefault(x => x.Carbrand_Id == id);
             carbrand.Carbrand_Foundation_Year = newFoundationYear;
             this.carShopDataEntities.SaveChanges();
         }
@@ -127,9 +127,16 @@ namespace CarShop.Repository
         /// <param name="newYearlyTraffic">New yearly traffic of the car brand</param>
         public void ChangeYearlyTraffic(int id, string newYearlyTraffic)
         {
-            var carbrand = this.carShopDataEntities.CarBrands.Single(x => x.Carbrand_Id == id);
-            carbrand.Carbrand_Yearly_Traffic = newYearlyTraffic;
-            this.carShopDataEntities.SaveChanges();
+            var carbrand = this.carShopDataEntities.CarBrands.FirstOrDefault(x => x.Carbrand_Id == id);
+            if (carbrand == null)
+            {
+                throw new NoIdFoundException("There is no such an ID.", carbrand);
+            }
+            else
+            {
+                carbrand.Carbrand_Yearly_Traffic = newYearlyTraffic;
+                this.carShopDataEntities.SaveChanges();
+            }
         }
     }
 }

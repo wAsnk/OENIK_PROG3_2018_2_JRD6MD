@@ -140,35 +140,60 @@ namespace CarShop.Logic
         /// Removes an item from the database DELETE
         /// </summary>
         /// <param name="mainMenuWaitingKey">Main menu key which defines the table</param>
-        public void Delete(string mainMenuWaitingKey)
+        /// <param name="idToDelete">Id of the data to be deleted.</param>
+        public void Delete(string mainMenuWaitingKey, int idToDelete)
         {
             if (mainMenuWaitingKey == "0")
             {
-                Console.WriteLine("Carbrand ID to be deleted: ");
-                var todelete = int.Parse(Console.ReadLine());
-                CarBrand carBrandToDelete = this.carBrandRepository.ReadAll().FirstOrDefault(x => x.Carbrand_Id == todelete);
-                this.carBrandRepository.Delete(carBrandToDelete);
+                CarBrand carBrandToDelete = this.carBrandRepository.ReadAll().FirstOrDefault(x => x.Carbrand_Id == idToDelete);
+                if (carBrandToDelete == null)
+                {
+                    throw new NoIdFoundException("There is no such an ID.", carBrandToDelete);
+                }
+                else
+                {
+                    this.carBrandRepository.Delete(carBrandToDelete);
+                }
             }
             else if (mainMenuWaitingKey == "1")
             {
-                Console.WriteLine("Model ID to be deleted: ");
-                var todelete = int.Parse(Console.ReadLine());
-                Model modelToDelete = this.modelRepository.ReadAll().FirstOrDefault(x => x.Model_Id == todelete);
-                this.modelRepository.Delete(modelToDelete);
+                Model modelToDelete = this.modelRepository.ReadAll().FirstOrDefault(x => x.Model_Id == idToDelete);
+                if (modelToDelete == null)
+                {
+                    throw new NoIdFoundException("There is no such an ID.", modelToDelete);
+                }
+                else
+                {
+                    this.modelRepository.Delete(modelToDelete);
+                }
             }
             else if (mainMenuWaitingKey == "2")
             {
-                Console.WriteLine("Extra ID to be deleted: ");
-                var todelete = int.Parse(Console.ReadLine());
-                Extra extraToDelete = this.extraRepository.ReadAll().FirstOrDefault(x => x.Extra_Id == todelete);
-                this.extraRepository.Delete(extraToDelete);
+                Extra extraToDelete = this.extraRepository.ReadAll().FirstOrDefault(x => x.Extra_Id == idToDelete);
+                if (extraToDelete == null)
+                {
+                    throw new NoIdFoundException("There is no such an ID.", extraToDelete);
+                }
+                else
+                {
+                    this.extraRepository.Delete(extraToDelete);
+                }
             }
             else if (mainMenuWaitingKey == "3")
             {
-                Console.WriteLine("ModelExtraSwitch ID to be deleted: ");
-                var todelete = int.Parse(Console.ReadLine());
-                ModelExtraswitch modelExtraSwitchToDelete = this.modelExtraSwitchRepository.ReadAll().FirstOrDefault(x => x.ModelExtraswitch_Id == todelete);
-                this.modelExtraSwitchRepository.Delete(modelExtraSwitchToDelete);
+                ModelExtraswitch modelExtraSwitchToDelete = this.modelExtraSwitchRepository.ReadAll().FirstOrDefault(x => x.ModelExtraswitch_Id == idToDelete);
+                if (modelExtraSwitchToDelete == null)
+                {
+                    throw new NoIdFoundException("There is no such an ID.", modelExtraSwitchToDelete);
+                }
+                else
+                {
+                    this.modelExtraSwitchRepository.Delete(modelExtraSwitchToDelete);
+                }
+            }
+            else
+            {
+                throw new NoClassException("There is no such a table.", mainMenuWaitingKey);
             }
         }
 
@@ -195,6 +220,10 @@ namespace CarShop.Logic
             else if (mainMenuWaitingKey == "3")
             {
                 this.modelExtraSwitchRepository.ChangeExtraId(id, int.Parse(updateData));
+            }
+            else
+            {
+                throw new NoClassException("There is no such a table.", mainMenuWaitingKey);
             }
         }
 
