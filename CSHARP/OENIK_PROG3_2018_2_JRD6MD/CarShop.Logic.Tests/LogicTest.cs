@@ -279,5 +279,71 @@ namespace CarShop.Logic.Tests
 
             Assert.Throws<NoClassException>(() => logic.Update(menu.ToString(), 1, "Updatedata"));
         }
+
+        /// <summary>
+        /// When Cars full Price called only read all got called.
+        /// </summary>
+        [Test]
+        public void When_CarsFullPrice_Called_OnlyReadAllIsCalled()
+        {
+            // Legyen lehetőségünk kiírni minden autóhoz az autó TELJES árát is: alapár + a rajta lévő extrák összára
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            logic.CarsFullPrice();
+            carbrandMock.Verify(x => x.ReadAll(), Times.Once);
+            carbrandMock.Verify(x => x.Delete(It.IsAny<CarBrand>()), Times.Never);
+            carbrandMock.Verify(x => x.Create(It.IsAny<CarBrand>()), Times.Never);
+            carbrandMock.Verify(x => x.ChangeYearlyTraffic(It.IsAny<int>(), It.IsAny<string>()), Times.Never);
+        }
+
+        /// <summary>
+        /// When AverageBasePrice_PerBrands is called only readall function got called
+        /// </summary>
+        [Test]
+        public void When_AverageBasePrice_PerBrands_Called_OnlyReadAllIsCalled()
+        {
+            // Legyen lehetőségünk kiírni márkánként az autók átlagos alapárát
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            logic.AverageBasePrice_PerBrands();
+            carbrandMock.Verify(x => x.ReadAll(), Times.Once);
+            carbrandMock.Verify(x => x.Delete(It.IsAny<CarBrand>()), Times.Never);
+            carbrandMock.Verify(x => x.Create(It.IsAny<CarBrand>()), Times.Never);
+            carbrandMock.Verify(x => x.ChangeYearlyTraffic(It.IsAny<int>(), It.IsAny<string>()), Times.Never);
+        }
+
+        /// <summary>
+        /// When ExtraCategoryUseage is called only readall function got called
+        /// </summary>
+        [Test]
+        public void When_ExtraCategoryUseage_Called_OnlyReadAllIsCalled()
+        {
+            // Legyen lehetőségünk kiírni márkánként az autók átlagos alapárát
+            // Arrange
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            logic.ExtraCategoryUseage();
+            carbrandMock.Verify(x => x.ReadAll(), Times.Once);
+            carbrandMock.Verify(x => x.Delete(It.IsAny<CarBrand>()), Times.Never);
+            carbrandMock.Verify(x => x.Create(It.IsAny<CarBrand>()), Times.Never);
+            carbrandMock.Verify(x => x.ChangeYearlyTraffic(It.IsAny<int>(), It.IsAny<string>()), Times.Never);
+        }
     }
 }
