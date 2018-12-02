@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IJava.cs" />
     <Compile Include="Java.cs" />
+    <Compile Include="JavaData.cs" />
     <Compile Include="NoParameterException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

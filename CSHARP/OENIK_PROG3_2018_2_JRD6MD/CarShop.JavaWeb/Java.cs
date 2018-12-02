@@ -17,34 +17,29 @@ namespace CarShop.JavaWeb
     /// <summary>
     /// The class for the JAVA endpoint.
     /// </summary>
-    public class Java
+    public class Java : IJava
     {
-        /// <summary>
-        /// Gets or sets carname
-        /// </summary>
-        public string Carname { get; set; }
+        private string url;
 
         /// <summary>
-        /// Gets or sets price
+        /// Initializes a new instance of the <see cref="Java"/> class.
         /// </summary>
-        public string Price { get; set; }
-
-        /// <summary>
-        /// Gets or sets name
-        /// </summary>
-        public string Name { get; set; }
+        /// <param name="url">Url of the request.</param>
+        public Java(string url)
+        {
+            this.url = url;
+        }
 
         /// <summary>
         /// Get elements from the JAVA servlet
         /// </summary>
-        /// <param name="url">GET url</param>
         /// <returns>Returns the elements</returns>
-        public IEnumerable<Java> GetElements(string url)
+        public IEnumerable<JavaData> GetElements()
         {
-            XDocument xDoc = this.DownloadFeed(url);
+            XDocument xDoc = this.DownloadFeed(this.url);
             var cars = xDoc.Element("cars").Elements("car");
 
-            IEnumerable<Java> javas = cars.Select(x => new Java()
+            IEnumerable<JavaData> javas = cars.Select(x => new JavaData()
             {
                 Carname = x.Element("carbrand").Value,
                 Price = x.Element("price").Value,

@@ -329,7 +329,7 @@ namespace CarShop.Logic
         public IEnumerable<string> RequestPriceOffer(string fullname, string carname, string price)
         {
                 string url = "http://localhost:8080/Arajanlatkero/Arajanlat?carname=" + carname + "&price=" + price + "&name=" + fullname;
-                var javas = new Java().GetElements(url).Select(x => "Full name: " + x.Name + "\nCar name: " + x.Carname + "\nPrice: " + x.Price);
+                var javas = new Java(url).GetElements().Select(x => "Full name: " + x.Name + "\nCar name: " + x.Carname + "\nPrice: " + x.Price);
                 return javas;
         }
     }

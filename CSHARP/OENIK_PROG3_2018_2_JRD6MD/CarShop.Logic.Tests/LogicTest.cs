@@ -11,6 +11,7 @@ namespace CarShop.Logic.Tests
     using System.Text;
     using System.Threading.Tasks;
     using CarShop.Data;
+    using CarShop.JavaWeb;
     using CarShop.Logic;
     using CarShop.Repository;
     using Moq;
@@ -344,6 +345,21 @@ namespace CarShop.Logic.Tests
             carbrandMock.Verify(x => x.Delete(It.IsAny<CarBrand>()), Times.Never);
             carbrandMock.Verify(x => x.Create(It.IsAny<CarBrand>()), Times.Never);
             carbrandMock.Verify(x => x.ChangeYearlyTraffic(It.IsAny<int>(), It.IsAny<string>()), Times.Never);
+        }
+
+        /// <summary>
+        /// When java endpoint is called with missing parameter exception is thrown
+        /// </summary>
+        [Test]
+        public void WhenJavaEndpointCalledWithMissingParameter_NoParameterExceptionThrown()
+        {
+            Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
+            Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
+            Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
+            Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+
+            Assert.Throws<NoParameterException>(() => logic.RequestPriceOffer(string.Empty, "Something", "100"));
         }
     }
 }
