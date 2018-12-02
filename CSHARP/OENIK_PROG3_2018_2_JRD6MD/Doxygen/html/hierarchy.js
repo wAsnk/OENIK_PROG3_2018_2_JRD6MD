@@ -7,11 +7,15 @@ var hierarchy =
       [ "CarShop.Data.CarShopDataEntities", "class_car_shop_1_1_data_1_1_car_shop_data_entities.html", null ]
     ] ],
     [ "Exception", null, [
+      [ "CarShop.JavaWeb.NoParameterException", "class_car_shop_1_1_java_web_1_1_no_parameter_exception.html", null ],
       [ "CarShop.Logic.NoClassException", "class_car_shop_1_1_logic_1_1_no_class_exception.html", null ],
       [ "CarShop.Repository.NoIdFoundException", "class_car_shop_1_1_repository_1_1_no_id_found_exception.html", null ],
       [ "CarShop.Repository.NullObjectException", "class_car_shop_1_1_repository_1_1_null_object_exception.html", null ]
     ] ],
     [ "CarShop.Data.Extra", "class_car_shop_1_1_data_1_1_extra.html", null ],
+    [ "CarShop.JavaWeb.IJava", "interface_car_shop_1_1_java_web_1_1_i_java.html", [
+      [ "CarShop.JavaWeb.Java", "class_car_shop_1_1_java_web_1_1_java.html", null ]
+    ] ],
     [ "CarShop.Logic.ILogic", "interface_car_shop_1_1_logic_1_1_i_logic.html", [
       [ "CarShop.Logic.CarBrandLogic", "class_car_shop_1_1_logic_1_1_car_brand_logic.html", null ]
     ] ],
@@ -39,10 +43,12 @@ var hierarchy =
       ] ]
     ] ],
     [ "ISerializable", null, [
+      [ "CarShop.JavaWeb.NoParameterException", "class_car_shop_1_1_java_web_1_1_no_parameter_exception.html", null ],
       [ "CarShop.Logic.NoClassException", "class_car_shop_1_1_logic_1_1_no_class_exception.html", null ],
       [ "CarShop.Repository.NoIdFoundException", "class_car_shop_1_1_repository_1_1_no_id_found_exception.html", null ],
       [ "CarShop.Repository.NullObjectException", "class_car_shop_1_1_repository_1_1_null_object_exception.html", null ]
     ] ],
+    [ "CarShop.JavaWeb.JavaData", "class_car_shop_1_1_java_web_1_1_java_data.html", null ],
     [ "CarShop.Logic.Tests.LogicTest", "class_car_shop_1_1_logic_1_1_tests_1_1_logic_test.html", null ],
     [ "CarShop.Program.MainProgram", "class_car_shop_1_1_program_1_1_main_program.html", null ],
     [ "CarShop.Data.Model", "class_car_shop_1_1_data_1_1_model.html", null ],

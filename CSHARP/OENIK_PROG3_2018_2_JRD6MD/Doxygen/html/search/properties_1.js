@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['msg',['Msg',['../class_car_shop_1_1_logic_1_1_no_class_exception.html#a87998bb5388f43e215468981b28fbcf9',1,'CarShop.Logic.NoClassException.Msg()'],['../class_car_shop_1_1_repository_1_1_no_id_found_exception.html#aa3d9f9396e1a3a1751b802e1957c40bf',1,'CarShop.Repository.NoIdFoundException.Msg()']]]
+  ['emessage',['EMessage',['../class_car_shop_1_1_java_web_1_1_no_parameter_exception.html#a000bace1f08aadcce553f7019a78dcb4',1,'CarShop.JavaWeb.NoParameterException.EMessage()'],['../class_car_shop_1_1_repository_1_1_null_object_exception.html#ad6fd1f520c6145df82d4d524621f1b18',1,'CarShop.Repository.NullObjectException.EMessage()']]]
 ];

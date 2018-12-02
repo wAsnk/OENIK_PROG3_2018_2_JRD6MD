@@ -48,7 +48,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_car_brand_logic_8cs_source.html",
-"md__d_1__prog3__c_s_h_a_r_p__o_e_n_i_k__p_r_o_g3_2018_2__j_r_d6_m_d_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html"
+"interface_car_shop_1_1_logic_1_1_i_logic.html#a99d9cad510634f372fac40c2b2a27f4b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
