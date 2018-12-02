@@ -9,6 +9,7 @@ namespace CarShop.Program
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using System.Net;
     using System.Text;
     using System.Threading.Tasks;
     using CarShop.Data;
@@ -188,13 +189,32 @@ namespace CarShop.Program
                         case "d":
                             {
                                 Console.Clear();
+                                Console.WriteLine("Offer request");
+                                Console.Write("Your full name: ");
+                                string fullname = Console.ReadLine();
+                                Console.Write("Car full name: ");
+                                string carname = Console.ReadLine();
+                                Console.Write("Price you are looking around: ");
+                                string price = Console.ReadLine();
+                                Console.Clear();
+                                try
+                                {
+                                    WriteArray(logic.RequestPriceOffer(fullname, carname, price));
+                                }
+                                catch (FormatException exception)
+                                {
+                                    Console.WriteLine("\n\nYou gave wrong format to the previous data, try again!\n\nException message: " + exception.Message + "\n\n");
+                                }
+                                catch (WebException exception)
+                                {
+                                    Console.WriteLine("Wrong URL. Try again with correct data!\n\nException message: " + exception.Message);
+                                }
+                                catch (NoParameterException exception)
+                                {
+                                    Console.WriteLine(exception.EMessage);
+                                }
 
-                                // Process p = Process.Start("http://localhost:8080/Arajanlatkero/");
-                                // Java.DotheJava();
-                                string url = "http://users.nik.uni-obuda.hu/bpeter/Data/war_of_westeros.xml";
-                                Java.GetData(url);
-
-                                Console.WriteLine("Press enter to return to the main menu.");
+                                Console.WriteLine("\nPress enter to return to the main menu.");
                                 Console.ReadLine();
 
                                 break;
@@ -223,6 +243,20 @@ namespace CarShop.Program
                 Console.WriteLine("-------------------------------------------------------------------");
                 Console.WriteLine(item);
                 Console.WriteLine("-------------------------------------------------------------------");
+            }
+        }
+
+        /// <summary>
+        /// Writes to the console the given IEnumerable array.
+        /// </summary>
+        /// <param name="givenarray">IQueryable which should be written on the console</param>
+        private static void WriteArray(IEnumerable<string> givenarray)
+        {
+            foreach (var item in givenarray)
+            {
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine(item);
+                Console.WriteLine("----------------------------------------");
             }
         }
 

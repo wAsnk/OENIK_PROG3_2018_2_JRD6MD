@@ -11,6 +11,7 @@ namespace CarShop.Logic
     using System.Text;
     using System.Threading.Tasks;
     using CarShop.Data;
+    using CarShop.JavaWeb;
 
     /// <summary>
     /// ILogic interface defined here
@@ -66,6 +67,10 @@ namespace CarShop.Logic
         /// <summary>
         /// Request price offer using JAVA
         /// </summary>
-        void RequestPriceOffer();
+        /// <param name="fullname">Fulname parameter</param>
+        /// <param name="carname">carname parameter</param>
+        /// <param name="price">Price parameter</param>
+        /// <returns>Returns java offer request data</returns>
+        IEnumerable<string> RequestPriceOffer(string fullname, string carname, string price);
     }
 }

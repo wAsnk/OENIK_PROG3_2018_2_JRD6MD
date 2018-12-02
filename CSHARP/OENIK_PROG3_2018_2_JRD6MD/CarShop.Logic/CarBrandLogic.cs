@@ -8,9 +8,12 @@ namespace CarShop.Logic
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml.Linq;
     using CarShop.Data;
+    using CarShop.JavaWeb;
     using CarShop.Repository;
 
     /// <summary>
@@ -319,8 +322,15 @@ namespace CarShop.Logic
         /// <summary>
         /// Request price offer using JAVA
         /// </summary>
-        public void RequestPriceOffer()
+        /// <param name="fullname">Fulname parameter</param>
+        /// <param name="carname">carname parameter</param>
+        /// <param name="price">Price parameter</param>
+        /// <returns>Returns java offer request data</returns>
+        public IEnumerable<string> RequestPriceOffer(string fullname, string carname, string price)
         {
+                string url = "http://localhost:8080/Arajanlatkero/Arajanlat?carname=" + carname + "&price=" + price + "&name=" + fullname;
+                var javas = new Java().GetElements(url).Select(x => "Full name: " + x.Name + "\nCar name: " + x.Carname + "\nPrice: " + x.Price);
+                return javas;
         }
     }
 }
