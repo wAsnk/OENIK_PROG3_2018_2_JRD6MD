@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Autotarolo {
     
-    private static ArrayList<Auto> tarolo = new ArrayList<>();
+    private ArrayList<Auto> tarolo = new ArrayList<>();
     
 
     public Autotarolo() {
