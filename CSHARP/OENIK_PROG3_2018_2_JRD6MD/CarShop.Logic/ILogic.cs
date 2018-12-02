@@ -54,12 +54,14 @@ namespace CarShop.Logic
         /// <summary>
         /// Gives the Average Base Price Per Brands
         /// </summary>
-        void AverageBasePrice_PerBrands();
+        /// <returns>Returns Average price per car brand</returns>
+        IQueryable AverageBasePrice_PerBrands();
 
         /// <summary>
         /// Gives beck the Extra categories usage
         /// </summary>
-        void ExtraCategoryUseage();
+        /// <returns>Returns Extra category useage</returns>
+        IQueryable ExtraCategoryUseage();
 
         /// <summary>
         /// Request price offer using JAVA

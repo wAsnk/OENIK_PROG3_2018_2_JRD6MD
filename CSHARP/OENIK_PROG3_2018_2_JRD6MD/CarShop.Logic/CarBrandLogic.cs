@@ -239,32 +239,6 @@ namespace CarShop.Logic
             var models = this.modelRepository.ReadAll();
             var modelextraswitch = this.modelExtraSwitchRepository.ReadAll();
 
-            /*
-            var preResult = modelextraswitch.Join(extras, x => x.Extra_Id, y => y.Extra_Id, (e, d) => new
-            {
-                EXTRAID = e.Extra_Id,
-                EXTRAPRICE = d.Extra_Price
-            }).Join(modelextraswitch, z => z.EXTRAID, c => c.Extra_Id, (a, b) => new
-            {
-                EXTRAID = a.EXTRAID,
-                EXTRAPRICE = a.EXTRAPRICE,
-                MODELID = b.Model_Id
-            }).Join(models, a => a.MODELID, s => s.Model_Id, (a, b) => new
-            {
-                EXTRAID = a.EXTRAID,
-                EXTRAPRICE = a.EXTRAPRICE,
-                BASEPRICE = b.Model_Base_Price,
-                CARID = b.Carbrand_Id
-            }).Join(carbrands, x => x.CARID, y => y.Carbrand_Id, (a, b) => new
-            {
-                EXTRAID = a.EXTRAID,
-                EXTRAPRICE = a.EXTRAPRICE,
-                BASEPRICE = a.BASEPRICE,
-                FULLPRICE = a.EXTRAPRICE + a.BASEPRICE,
-                CARNAME = b.Carbrand_Name
-            }).GroupBy(x => x.FULLPRICE);
-            */
-
             var prepreResult = modelextraswitch.Join(models, x => x.Model_Id, y => y.Model_Id, (e, d) => new
             {
                 MODELID = d.Model_Id,
@@ -279,7 +253,6 @@ namespace CarShop.Logic
                 FULLPRICE = a.MODELPRICE + b.Extra_Price
             }).GroupBy(x => x.MODELNAME);
 
-            // var result = preResult.Select(x => "Carname: " + x.CARNAME + "Fullprice: " + x.FULLPRICE);
             var preresult = prepreResult.Select(x => new
             {
                 MODELNAME = x.Key,
@@ -293,17 +266,54 @@ namespace CarShop.Logic
         /// <summary>
         /// Gives the Average Base Price Per Brands
         /// </summary>
-        public void AverageBasePrice_PerBrands()
+        /// <returns>Returns Average price per car brand</returns>
+        public IQueryable AverageBasePrice_PerBrands()
         {
             // Legyen lehetőségünk kiírni márkánként az autók átlagos alapárát
+            var carbrands = this.carBrandRepository.ReadAll();
+            var models = this.modelRepository.ReadAll();
+
+            var phaseOne = carbrands.Join(models, x => x.Carbrand_Id, y => y.Carbrand_Id, (a, b) => new
+            {
+                NAME = a.Carbrand_Name,
+                BASEPRICE = b.Model_Base_Price
+            }).GroupBy(x => x.NAME).Select(y => new
+            {
+                NAME = y.Key,
+                BASEPRICE = y.Average(x => x.BASEPRICE)
+            });
+
+            var result = phaseOne.Select(x => "Car brand: " + x.NAME + "\n\tAverage base price: " + x.BASEPRICE + " euro");
+
+            return result;
         }
 
         /// <summary>
         /// Gives beck the Extra categories usage
         /// </summary>
-        public void ExtraCategoryUseage()
+        /// <returns>Returns Extra category useage</returns>
+        public IQueryable ExtraCategoryUseage()
         {
-            // Legyen lehetőségünk kiírni az extrák kategórianeveként csoportosítva azt, hogy melyik kategória hányszor van autókhoz kapcsolva
+            /* Legyen lehetőségünk kiírni az extrák kategórianeveként csoportosítva azt,
+             hogy melyik kategória hányszor van autókhoz kapcsolva */
+            var carbrands = this.carBrandRepository.ReadAll();
+            var extras = this.extraRepository.ReadAll();
+            var models = this.modelRepository.ReadAll();
+            var modelextraswitch = this.modelExtraSwitchRepository.ReadAll();
+
+            var phaseOne = extras.Join(modelextraswitch, x => x.Extra_Id, y => y.Extra_Id, (a, b) => new
+            {
+                CATEGORY_NAME = a.Extra_Category_Name,
+                MODELID = b.Model_Id
+            }).GroupBy(x => x.CATEGORY_NAME).Select(y => new
+            {
+                CATEGORY_NAME = y.Key,
+                COUNT = y.Count()
+            });
+
+            var result = phaseOne.Select(x => x.CATEGORY_NAME + "\t" + x.COUNT);
+
+            return result;
         }
 
         /// <summary>

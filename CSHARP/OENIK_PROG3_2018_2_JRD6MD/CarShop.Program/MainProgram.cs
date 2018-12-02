@@ -168,6 +168,7 @@ namespace CarShop.Program
                         case "b":
                             {
                                 Console.Clear();
+                                WriteArray(logic.AverageBasePrice_PerBrands());
                                 Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
@@ -177,6 +178,7 @@ namespace CarShop.Program
                         case "c":
                             {
                                 Console.Clear();
+                                WriteArray(logic.ExtraCategoryUseage());
                                 Console.WriteLine("Press enter to return to the main menu.");
                                 Console.ReadLine();
 
