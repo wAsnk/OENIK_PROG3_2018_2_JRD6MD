@@ -447,25 +447,25 @@ namespace CarShop.Program
             {
                 if (mainMenuWaitingKey == "0")
                 {
-                    Console.WriteLine("Carbrand ID to be deleted: ");
+                    Console.Write("Carbrand ID to be deleted: ");
                     var idToDelete = int.Parse(Console.ReadLine());
                     logic.Delete(mainMenuWaitingKey, idToDelete);
                 }
                 else if (mainMenuWaitingKey == "1")
                 {
-                    Console.WriteLine("Model ID to be deleted: ");
+                    Console.Write("Model ID to be deleted: ");
                     var idToDelete = int.Parse(Console.ReadLine());
                     logic.Delete(mainMenuWaitingKey, idToDelete);
                 }
                 else if (mainMenuWaitingKey == "2")
                 {
-                    Console.WriteLine("Extra ID to be deleted: ");
+                    Console.Write("Extra ID to be deleted: ");
                     var idToDelete = int.Parse(Console.ReadLine());
                     logic.Delete(mainMenuWaitingKey, idToDelete);
                 }
                 else if (mainMenuWaitingKey == "3")
                 {
-                    Console.WriteLine("ModelExtraSwitch ID to be deleted: ");
+                    Console.Write("ModelExtraSwitch ID to be deleted: ");
                     var idToDelete = int.Parse(Console.ReadLine());
                     logic.Delete(mainMenuWaitingKey, idToDelete);
                 }
