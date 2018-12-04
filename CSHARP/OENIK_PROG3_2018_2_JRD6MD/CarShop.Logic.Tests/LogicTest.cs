@@ -34,7 +34,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             // Act
             var result = logic.ReadAll("10");
@@ -58,8 +59,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             List<CarBrand> carbrands = new List<CarBrand>()
             {
@@ -109,8 +110,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             string testObject = "WRONG";
 
@@ -127,7 +128,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             CarBrand carBrand = new CarBrand() { Carbrand_Id = 1, Carbrand_Name = "Ferrari", Carbrand_Country_Name = "Italy", Carbrand_Url = "https://ferrari.com", Carbrand_Foundation_Year = 1952, Carbrand_Yearly_Traffic = "56 billion euro" };
 
@@ -146,7 +148,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             Model model = new Model() { Model_Id = 1, Carbrand_Id = 1, Model_Name = "Model1", Model_Release_Day = DateTime.Parse("2018-11-23"), Model_Engine_Volume = 123123, Model_Horsepower = 3000, Model_Base_Price = 20000 };
 
@@ -165,7 +168,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             Extra extra = new Extra() { Extra_Id = 1, Extra_Category_Name = "Name1", Extra_Name = "Name1-1", Extra_Price = 3000, Extra_Color = "blue", Extra_Multiple_Usage = 0 };
 
@@ -184,7 +188,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             ModelExtraswitch modelExtraswitch = new ModelExtraswitch() { ModelExtraswitch_Id = 1, Model_Id = 1, Extra_Id = 1 };
 
@@ -208,8 +213,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             List<CarBrand> carbrands = new List<CarBrand>()
             {
@@ -257,8 +262,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             Assert.Throws<NoClassException>(() => logic.Delete(menu.ToString(), 1));
         }
@@ -275,8 +280,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             Assert.Throws<NoClassException>(() => logic.Update(menu.ToString(), 1, "Updatedata"));
         }
@@ -293,8 +298,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             logic.CarsFullPrice();
             carbrandMock.Verify(x => x.ReadAll(), Times.Once);
@@ -315,8 +320,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             logic.AverageBasePrice_PerBrands();
             carbrandMock.Verify(x => x.ReadAll(), Times.Once);
@@ -337,8 +342,8 @@ namespace CarShop.Logic.Tests
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
             logic.ExtraCategoryUseage();
             carbrandMock.Verify(x => x.ReadAll(), Times.Once);
@@ -348,18 +353,29 @@ namespace CarShop.Logic.Tests
         }
 
         /// <summary>
-        /// When java endpoint is called with missing parameter exception is thrown
+        /// When java endpoint is called it gives back parameters.
         /// </summary>
         [Test]
-        public void WhenJavaEndpointCalledWithMissingParameter_NoParameterExceptionThrown()
+        public void WhenJavaEndpointCalled_ItCallsGetelements()
         {
             Mock<ICarBrandRepository> carbrandMock = new Mock<ICarBrandRepository>();
             Mock<IModelRepository> modelMock = new Mock<IModelRepository>();
             Mock<IExtraRepository> extraMock = new Mock<IExtraRepository>();
             Mock<IModelExtraSwitchRepository> modelextraMock = new Mock<IModelExtraSwitchRepository>();
-            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object);
+            Mock<IJava> javaMock = new Mock<IJava>();
+            CarBrandLogic logic = new CarBrandLogic(carbrandMock.Object, modelMock.Object, extraMock.Object, modelextraMock.Object, javaMock.Object);
 
-            Assert.Throws<NoParameterException>(() => logic.RequestPriceOffer(string.Empty, "Something", "100"));
+            IEnumerable<JavaData> javaDatas = new List<JavaData>()
+            {
+                new JavaData() { Carname = "Audi R8", Name = "Customer name", Price = "10000" },
+                new JavaData() { Carname = "Audi R8", Name = "Customer name", Price = "11000" },
+                new JavaData() { Carname = "Audi R8", Name = "Customer name", Price = "9000" }
+            };
+
+            javaMock.Setup(x => x.GetElements()).Returns(javaDatas);
+            logic.RequestPriceOffer(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>());
+
+            javaMock.Verify(x => x.GetElements(), Times.Once);
         }
     }
 }

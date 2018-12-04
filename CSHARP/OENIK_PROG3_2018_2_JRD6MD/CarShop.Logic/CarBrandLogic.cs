@@ -25,6 +25,7 @@ namespace CarShop.Logic
         private readonly IModelRepository modelRepository;
         private readonly IExtraRepository extraRepository;
         private readonly IModelExtraSwitchRepository modelExtraSwitchRepository;
+        private readonly IJava java;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CarBrandLogic"/> class.
@@ -33,16 +34,19 @@ namespace CarShop.Logic
         /// <param name="modelRepository">Model repo</param>
         /// <param name="extraRepository">Extra repo</param>
         /// <param name="modelExtraSwitchRepository">Modelextraswitch repo</param>
+        /// <param name="java">Java logic</param>
         public CarBrandLogic(
             ICarBrandRepository carBrandRepository,
             IModelRepository modelRepository,
             IExtraRepository extraRepository,
-            IModelExtraSwitchRepository modelExtraSwitchRepository)
+            IModelExtraSwitchRepository modelExtraSwitchRepository,
+            IJava java)
         {
             this.carBrandRepository = carBrandRepository;
             this.modelRepository = modelRepository;
             this.extraRepository = extraRepository;
             this.modelExtraSwitchRepository = modelExtraSwitchRepository;
+            this.java = java;
         }
 
         /// <summary>
@@ -328,9 +332,10 @@ namespace CarShop.Logic
         /// <returns>Returns java offer request data</returns>
         public IEnumerable<string> RequestPriceOffer(string fullname, string carname, string price)
         {
-                string url = "http://localhost:8080/Arajanlatkero/Arajanlat?carname=" + carname + "&price=" + price + "&name=" + fullname;
-                var javas = new Java(url).GetElements().Select(x => "Full name: " + x.Name + "\nCar name: " + x.Carname + "\nPrice: " + x.Price);
-                return javas;
+            string url = "http://localhost:8080/Arajanlatkero/Arajanlat?carname=" + carname + "&price=" + price + "&name=" + fullname;
+            this.java.Url = url;
+            var javas = this.java.GetElements().Select(x => "Full name: " + x.Name + "\nCar name: " + x.Carname + "\nPrice: " + x.Price);
+            return javas;
         }
     }
 }

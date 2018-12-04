@@ -33,8 +33,8 @@ namespace CarShop.Program
                 IModelRepository modelRepository = new ModelRepository(carShopDataEntities);
                 IExtraRepository extraRepository = new ExtraRepository(carShopDataEntities);
                 IModelExtraSwitchRepository modelExtraSwitchRepository = new ModelExtraSwitchRepository(carShopDataEntities);
-
-                ILogic logic = new CarBrandLogic(carBrandRepository, modelRepository, extraRepository, modelExtraSwitchRepository);
+                IJava javarepo = new Java();
+                ILogic logic = new CarBrandLogic(carBrandRepository, modelRepository, extraRepository, modelExtraSwitchRepository, javarepo);
 
                 ConsoleMenu(logic);
             }

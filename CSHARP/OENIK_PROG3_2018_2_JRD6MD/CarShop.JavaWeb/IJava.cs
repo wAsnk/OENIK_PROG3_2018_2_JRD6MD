@@ -18,6 +18,11 @@ namespace CarShop.JavaWeb
     public interface IJava
     {
         /// <summary>
+        /// Gets or sets url
+        /// </summary>
+        string Url { get; set; }
+
+        /// <summary>
         /// Get elements from the JAVA servlet
         /// </summary>
         /// <returns>Returns the elements</returns>

@@ -19,8 +19,7 @@ namespace CarShop.JavaWeb
     /// </summary>
     public class Java : IJava
     {
-        private string url;
-
+        /*
         /// <summary>
         /// Initializes a new instance of the <see cref="Java"/> class.
         /// </summary>
@@ -28,7 +27,19 @@ namespace CarShop.JavaWeb
         public Java(string url)
         {
             this.url = url;
+        }*/
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Java"/> class.
+        /// </summary>
+        public Java()
+        {
         }
+
+        /// <summary>
+        /// Gets or sets URL
+        /// </summary>
+        public string Url { get; set; }
 
         /// <summary>
         /// Get elements from the JAVA servlet
@@ -36,7 +47,7 @@ namespace CarShop.JavaWeb
         /// <returns>Returns the elements</returns>
         public IEnumerable<JavaData> GetElements()
         {
-            XDocument xDoc = this.DownloadFeed(this.url);
+            XDocument xDoc = this.DownloadFeed(this.Url);
             var cars = xDoc.Element("cars").Elements("car");
 
             IEnumerable<JavaData> javas = cars.Select(x => new JavaData()
